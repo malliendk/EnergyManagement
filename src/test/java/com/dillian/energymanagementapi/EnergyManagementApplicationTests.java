@@ -1,4 +1,4 @@
-package com.dillian.energymanagement;
+package com.dillian.energymanagementapi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

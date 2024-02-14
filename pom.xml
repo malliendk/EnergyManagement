@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.dillian</groupId>
-    <artifactId>EnergyManagement</artifactId>
+    <artifactId>EnergyManagementApi</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Energy Management</name>
+    <name>Energy Management Api</name>
     <description>Energy Management</description>
     <properties>
         <java.version>17</java.version>

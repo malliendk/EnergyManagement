@@ -1,4 +1,4 @@
-package com.dillian.energymanagement.exceptions;
+package com.dillian.energymanagementapi.exceptions;
 
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 

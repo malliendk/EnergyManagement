@@ -1,4 +1,4 @@
-package com.dillian.energymanagement.utils;
+package com.dillian.energymanagementapi.utils;
 
 public class Locations {
 

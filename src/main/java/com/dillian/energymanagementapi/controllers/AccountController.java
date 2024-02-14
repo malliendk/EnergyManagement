@@ -1,8 +1,8 @@
-package com.dillian.energymanagement.controllers;
+package com.dillian.energymanagementapi.controllers;
 
-import com.dillian.energymanagement.dtos.AccountGenerateRequest;
-import com.dillian.energymanagement.entities.Account;
-import com.dillian.energymanagement.services.AccountService;
+import com.dillian.energymanagementapi.dtos.AccountGenerateRequest;
+import com.dillian.energymanagementapi.entities.Account;
+import com.dillian.energymanagementapi.services.AccountService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;

@@ -1,6 +1,4 @@
-package com.dillian.energymanagement.utils;
-
-import lombok.NoArgsConstructor;
+package com.dillian.energymanagementapi.utils;
 
 
 public class Constants {

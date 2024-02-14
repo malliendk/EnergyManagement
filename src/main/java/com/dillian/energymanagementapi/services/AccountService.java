@@ -1,7 +1,7 @@
-package com.dillian.energymanagement.services;
+package com.dillian.energymanagementapi.services;
 
-import com.dillian.energymanagement.entities.Account;
-import com.dillian.energymanagement.repositories.AccountRepository;
+import com.dillian.energymanagementapi.entities.Account;
+import com.dillian.energymanagementapi.repositories.AccountRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.dillian.energymanagement.entities;
+package com.dillian.energymanagementapi.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
