@@ -26,6 +26,7 @@ public class SupplyOptimizer {
                 case Constants.SHORTAGE -> newSupplyAmount = supplyAmount + supplyAmount * 0.25;
                 case Constants.OPTIMAL -> newSupplyAmount = randomForOptimal(account);
                 case Constants.SURPLUS -> newSupplyAmount = supplyAmount - supplyAmount * 0.25;
+                default -> throw new RuntimeException("supplyType did not match a valid String");
             }
             account.setSupplyAmount(newSupplyAmount);
             accountRepository.save(account);
@@ -39,7 +40,7 @@ public class SupplyOptimizer {
         if (supplyAmount < 1) {
             return supplyAmount + selectRandomValue(new double[] {0, 0.05, 0.1, 0.25, 0.5});
         } else {
-            return supplyAmount + selectRandomValue(new double[] {-0.5, -0.25, -0.1, 0.05, 0});
+            return supplyAmount + selectRandomValue(new double[] {-0.5, -0.25, -0.1, -0.05, 0});
         }
     }
 
