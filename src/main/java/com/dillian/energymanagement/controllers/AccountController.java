@@ -1,8 +1,8 @@
-package com.dillian.energymanagementapi.controllers;
+package com.dillian.energymanagement.controllers;
 
-import com.dillian.energymanagementapi.dtos.AccountGenerateRequest;
-import com.dillian.energymanagementapi.entities.Account;
-import com.dillian.energymanagementapi.services.AccountService;
+import com.dillian.energymanagement.dtos.AccountGenerateRequestDto;
+import com.dillian.energymanagement.entities.Account;
+import com.dillian.energymanagement.services.account.AccountService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +19,7 @@ public class AccountController {
     private final AccountService accountService;
 
     @PostMapping()
-    public List<Account> generateAccounts(@RequestBody AccountGenerateRequest request) {
+    public List<Account> generateAccounts(@RequestBody AccountGenerateRequestDto request) {
         return accountService.generateAccounts(request.getNumberOfAccounts());
     }
 

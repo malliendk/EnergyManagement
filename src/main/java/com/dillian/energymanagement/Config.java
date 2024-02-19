@@ -1,4 +1,4 @@
-package com.dillian.energymanagementapi;
+package com.dillian.energymanagement;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,4 +1,4 @@
-package com.dillian.energymanagementapi.utils;
+package com.dillian.energymanagement.utils;
 
 
 public class Constants {

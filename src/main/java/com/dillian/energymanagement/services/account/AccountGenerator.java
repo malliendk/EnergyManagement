@@ -1,8 +1,9 @@
-package com.dillian.energymanagementapi.services;
+package com.dillian.energymanagement.services.account;
 
-import com.dillian.energymanagementapi.entities.Account;
-import com.dillian.energymanagementapi.repositories.AccountRepository;
-import com.dillian.energymanagementapi.utils.Locations;
+import com.dillian.energymanagement.entities.Account;
+import com.dillian.energymanagement.repositories.AccountRepository;
+import com.dillian.energymanagement.services.SupplyCategorizer;
+import com.dillian.energymanagement.utils.Localities;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -30,11 +31,11 @@ public class AccountGenerator {
     }
 
     public void saveOneOfEachSupplyType() {
-        accountRepository.save(new Account(1L, "John", Locations.localities[0],
+        accountRepository.save(new Account(1L, "John", Localities.localities[0],
                 "shortage", 0.2));
-        accountRepository.save(new Account(2L, "Henk", Locations.localities[1],
+        accountRepository.save(new Account(2L, "Henk", Localities.localities[1],
                 "optimal", 1.0));
-        accountRepository.save(new Account(3L, "Paul", Locations.localities[2],
+        accountRepository.save(new Account(3L, "Paul", Localities.localities[2],
                 "surplus", 1.8));
     }
 
@@ -48,8 +49,8 @@ public class AccountGenerator {
     }
 
     private String getRandomLocation() {
-        int randomElement = random.nextInt(Locations.localities.length);
-        return Locations.localities[randomElement];
+        int randomElement = random.nextInt(Localities.localities.length);
+        return Localities.localities[randomElement];
     }
 
     private double getRandomSupplyAmount() {

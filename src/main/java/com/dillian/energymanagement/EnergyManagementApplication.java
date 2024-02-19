@@ -1,7 +1,7 @@
-package com.dillian.energymanagementapi;
+package com.dillian.energymanagement;
 
-import com.dillian.energymanagementapi.entities.Account;
-import com.dillian.energymanagementapi.services.AccountGenerator;
+import com.dillian.energymanagement.entities.Account;
+import com.dillian.energymanagement.services.account.AccountGenerator;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;

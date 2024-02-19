@@ -1,10 +1,10 @@
-package com.dillian.energymanagementapi.dtos;
+package com.dillian.energymanagement.dtos;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class AccountGenerateRequest {
+public class AccountGenerateRequestDto {
     int numberOfAccounts;
 }

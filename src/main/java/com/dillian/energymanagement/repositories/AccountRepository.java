@@ -1,6 +1,6 @@
-package com.dillian.energymanagementapi.repositories;
+package com.dillian.energymanagement.repositories;
 
-import com.dillian.energymanagementapi.entities.Account;
+import com.dillian.energymanagement.entities.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
