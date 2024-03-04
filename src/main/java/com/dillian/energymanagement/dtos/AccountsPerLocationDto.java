@@ -7,8 +7,12 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class LocationNumberDto {
+public class AccountsPerLocationDto {
 
     String location;
     int numberOfAccounts;
+    int numberOfShortageAccounts;
+    int numberOfOptimalAccounts;
+    int numberOfSurplusAccounts;
+    double supplyMean;
 }

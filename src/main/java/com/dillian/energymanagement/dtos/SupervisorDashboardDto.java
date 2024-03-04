@@ -9,7 +9,5 @@ import java.util.List;
 @Setter
 public class SupervisorDashboardDto {
     String supervisorName;
-    String distributorName;
-    double supplyMean;
-    List<LocationNumberDto> locationsAndAccountNumber;
+    List<AccountsPerLocationDto> accountsPerLocationDtos;
 }

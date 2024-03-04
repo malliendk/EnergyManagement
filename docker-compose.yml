@@ -12,7 +12,7 @@ services:
       - "5432:5432"
 
   EnergyManagement:
-    image: energy-management-api
+    image: energy-management-api:v1.0
     depends_on:
       - energy-management-db
     ports:
@@ -21,7 +21,7 @@ services:
   carlease-front:
     image: energy-management-fe
     ports:
-      - "1000:4200"
+      - "1000:80"
 
 volumes:
   energy-management-db:

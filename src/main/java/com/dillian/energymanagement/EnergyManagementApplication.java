@@ -1,7 +1,8 @@
 package com.dillian.energymanagement;
 
+import com.dillian.energymanagement.bootstrap.SupervisorGenerator;
 import com.dillian.energymanagement.entities.Account;
-import com.dillian.energymanagement.services.account.AccountGenerator;
+import com.dillian.energymanagement.bootstrap.AccountGenerator;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
@@ -15,6 +16,7 @@ import java.util.List;
 @Slf4j
 public class EnergyManagementApplication implements CommandLineRunner {
 
+    private final SupervisorGenerator supervisorGenerator;
     private final AccountGenerator accountGenerator;
 
     public static void main(String[] args) {
@@ -23,10 +25,7 @@ public class EnergyManagementApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        accountGenerator.saveOneOfEachSupplyType();
-        List<Account> generatedAccounts = accountGenerator.generateAccounts(20);
-        if (generatedAccounts.isEmpty()) {
-            log.info("No generated accounts found");
-        }
+        accountGenerator.generateAccounts(30);
+        supervisorGenerator.createSupervisors();
     }
 }

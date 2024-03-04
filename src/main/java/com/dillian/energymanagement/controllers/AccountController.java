@@ -5,6 +5,7 @@ import com.dillian.energymanagement.entities.Account;
 import com.dillian.energymanagement.services.account.AccountService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,7 +14,6 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @RequestMapping("api/v1/accounts")
-@Slf4j
 public class AccountController {
 
     private final AccountService accountService;
@@ -50,7 +50,6 @@ public class AccountController {
 
     @PutMapping("optimize/start")
     public void startOptimizeSupply() {
-        log.info("Controller level");
         accountService.startOptimizeSupply();
     }
 

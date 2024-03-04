@@ -1,7 +1,9 @@
-package com.dillian.energymanagement.services.account;
+package com.dillian.energymanagement.bootstrap;
 
 import com.dillian.energymanagement.entities.Account;
+import com.dillian.energymanagement.entities.Supervisor;
 import com.dillian.energymanagement.repositories.AccountRepository;
+import com.dillian.energymanagement.services.SupervisorService;
 import com.dillian.energymanagement.services.SupplyCategorizer;
 import com.dillian.energymanagement.utils.Localities;
 import lombok.AllArgsConstructor;
@@ -17,34 +19,30 @@ public class AccountGenerator {
 
     private final AccountRepository accountRepository;
     private final SupplyCategorizer supplyCategorizer;
+    private final SupervisorService supervisorService;
     private static final Random random = new Random();
 
 
     public List<Account> generateAccounts(int numberOfAccounts) {
         List<Account> accounts = new ArrayList<>();
         for (int i = 0; i < numberOfAccounts; i++) {
-            Account account = createAccountWithRandomData();
+            Account account = createAccountWithRandomData((long) i);
             accountRepository.save(account);
             accounts.add(account);
         }
         return accounts;
     }
 
-    public void saveOneOfEachSupplyType() {
-        accountRepository.save(new Account(1L, "John", Localities.localities[0],
-                "shortage", 0.2));
-        accountRepository.save(new Account(2L, "Henk", Localities.localities[1],
-                "optimal", 1.0));
-        accountRepository.save(new Account(3L, "Paul", Localities.localities[2],
-                "surplus", 1.8));
-    }
 
-    private Account createAccountWithRandomData() {
+    private Account createAccountWithRandomData(Long id) {
         Account account = new Account();
+        account.setId(id);
         account.setLocation(getRandomLocation());
         double energySupply = getRandomSupplyAmount();
         account.setSupplyAmount(energySupply);
         supplyCategorizer.categorizeSupply(account);
+        Supervisor supervisor = supervisorService.findById(1L);
+        account.setSupervisor(supervisor);
         return account;
     }
 

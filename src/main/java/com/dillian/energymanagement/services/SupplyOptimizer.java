@@ -12,7 +12,6 @@ import java.util.Random;
 
 @Service
 @AllArgsConstructor
-@Slf4j
 public class SupplyOptimizer {
 
     private final AccountRepository accountRepository;
@@ -31,7 +30,6 @@ public class SupplyOptimizer {
             account.setSupplyAmount(newSupplyAmount);
             accountRepository.save(account);
         });
-        log.info(String.valueOf(accounts.size()));
         return accounts;
     }
 

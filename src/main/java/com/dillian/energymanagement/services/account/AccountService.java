@@ -1,21 +1,23 @@
 package com.dillian.energymanagement.services.account;
 
+import com.dillian.energymanagement.bootstrap.AccountGenerator;
 import com.dillian.energymanagement.entities.Account;
 import com.dillian.energymanagement.repositories.AccountRepository;
+import com.dillian.energymanagement.services.SupervisorService;
 import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 @AllArgsConstructor
-@Slf4j
 public class AccountService {
 
     private final AccountRepository accountRepository;
     private final AccountGenerator accountGenerator;
+    private final SupervisorService supervisorService;
     private final Scheduler scheduler;
+
 
 
     public List<Account> generateAccounts(int numberOfAccounts) {
@@ -45,8 +47,14 @@ public class AccountService {
                 .toList();
     }
 
+    public List<Account> findBySupervisorName(String supervisorName) {
+        return getAll()
+                .stream()
+                .filter(account -> account.getSupervisor().getName().equals(supervisorName))
+                .toList();
+    }
+
     public void startOptimizeSupply() {
-        log.info("service level");
         scheduler.startOptimzingSupply(getAll());
     }
 
