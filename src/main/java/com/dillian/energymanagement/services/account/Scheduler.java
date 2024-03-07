@@ -1,8 +1,8 @@
 package com.dillian.energymanagement.services.account;
 
 import com.dillian.energymanagement.entities.Account;
-import com.dillian.energymanagement.services.SupplyCategorizer;
-import com.dillian.energymanagement.services.SupplyOptimizer;
+import com.dillian.energymanagement.services.supply.SupplyCategorizer;
+import com.dillian.energymanagement.services.supply.SupplyOptimizer;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

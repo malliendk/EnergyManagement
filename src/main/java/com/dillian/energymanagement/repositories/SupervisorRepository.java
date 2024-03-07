@@ -7,5 +7,5 @@ import java.util.Optional;
 
 public interface SupervisorRepository extends JpaRepository<Supervisor, Long> {
 
-    Optional<Supervisor> findByName(String name);
+    Optional<Supervisor> findByLastName(String name);
 }

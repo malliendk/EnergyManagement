@@ -7,8 +7,9 @@ import java.util.List;
 
 @Getter
 @Setter
-public class SupervisorDashboardDto {
+public class SupervisorDto {
+
+    Long id;
     String firstName;
-    String LastName;
-    List<AccountsPerLocationDto> accountsPerLocationDtos;
+    String lastName;
 }

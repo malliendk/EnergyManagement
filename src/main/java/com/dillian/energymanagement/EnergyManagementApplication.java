@@ -25,7 +25,7 @@ public class EnergyManagementApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        accountGenerator.generateAccounts(30);
         supervisorGenerator.createSupervisors();
+        accountGenerator.generateAccounts(50);
     }
 }

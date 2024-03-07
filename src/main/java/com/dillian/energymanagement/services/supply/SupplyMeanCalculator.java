@@ -1,4 +1,4 @@
-package com.dillian.energymanagement.services;
+package com.dillian.energymanagement.services.supply;
 
 import com.dillian.energymanagement.entities.Account;
 import org.springframework.stereotype.Service;

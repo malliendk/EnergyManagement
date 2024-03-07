@@ -47,10 +47,10 @@ public class AccountService {
                 .toList();
     }
 
-    public List<Account> findBySupervisorName(String supervisorName) {
+    public List<Account> findBySupervisorLastName(String lastName) {
         return getAll()
                 .stream()
-                .filter(account -> account.getSupervisor().getName().equals(supervisorName))
+                .filter(account -> account.getSupervisor().getLastName().equals(lastName))
                 .toList();
     }
 

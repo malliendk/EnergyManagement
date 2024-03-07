@@ -12,13 +12,15 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class Supervisor {
 
 
     @Id
     @GeneratedValue
     Long id;
-    String name;
+    String firstName;
+    String lastName;
 
     @OneToMany
     List<Account> accounts;
@@ -26,11 +28,4 @@ public class Supervisor {
     List<Distributor> distributors;
     String profilePicUrl;
 
-    public Supervisor(Long id, String name, List<Account> accounts, List<Distributor> distributors, String profilePicUrl) {
-        this.id = id;
-        this.name = name;
-        this.accounts = accounts;
-        this.distributors = distributors;
-        this.profilePicUrl = profilePicUrl;
-    }
 }

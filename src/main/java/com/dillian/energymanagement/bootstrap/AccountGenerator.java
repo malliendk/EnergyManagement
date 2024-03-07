@@ -4,7 +4,7 @@ import com.dillian.energymanagement.entities.Account;
 import com.dillian.energymanagement.entities.Supervisor;
 import com.dillian.energymanagement.repositories.AccountRepository;
 import com.dillian.energymanagement.services.SupervisorService;
-import com.dillian.energymanagement.services.SupplyCategorizer;
+import com.dillian.energymanagement.services.supply.SupplyCategorizer;
 import com.dillian.energymanagement.utils.Localities;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

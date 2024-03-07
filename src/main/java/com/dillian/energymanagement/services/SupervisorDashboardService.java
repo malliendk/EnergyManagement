@@ -2,6 +2,7 @@ package com.dillian.energymanagement.services;
 
 import com.dillian.energymanagement.dtos.AccountsPerLocationDto;
 import com.dillian.energymanagement.dtos.SupervisorDashboardDto;
+import com.dillian.energymanagement.dtos.SupervisorDto;
 import com.dillian.energymanagement.entities.Account;
 import com.dillian.energymanagement.services.account.AccountService;
 import lombok.AllArgsConstructor;
@@ -17,14 +18,17 @@ public class SupervisorDashboardService {
 
     private final DistributorService distributorService;
     private final AccountService accountService;
+    private final SupervisorService supervisorService;
 
     public SupervisorDashboardDto createSupervisorDashboardDto(
-            String supervisorName) {
+            String lastName) {
 
-        SupervisorDashboardDto dashboardDto = new SupervisorDashboardDto();
-        dashboardDto.setSupervisorName(supervisorName);
+        SupervisorDashboardDto supervisorDashboardDto = new SupervisorDashboardDto();
+        final SupervisorDto supervisor = supervisorService.findByLastName(lastName);
+        supervisorDashboardDto.setFirstName(supervisor.getFirstName());
+        supervisorDashboardDto.setLastName(supervisor.getLastName());
 
-        List<AccountsPerLocationDto> accountsPerLocationDtos = accountService.findBySupervisorName(supervisorName)
+        List<AccountsPerLocationDto> accountsPerLocationDtos = accountService.findBySupervisorLastName(lastName)
                 .stream()
                 .collect(Collectors.groupingBy(Account::getLocation))
                 .entrySet()
@@ -44,8 +48,7 @@ public class SupervisorDashboardService {
                                 .average()
                                 .orElse(Double.NaN)))
                 .toList();
-        dashboardDto.setAccountsPerLocationDtos(accountsPerLocationDtos);
-
-        return dashboardDto;
+        supervisorDashboardDto.setAccountsPerLocationDtos(accountsPerLocationDtos);
+        return supervisorDashboardDto;
     }
 }
