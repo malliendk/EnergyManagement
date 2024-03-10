@@ -25,5 +25,5 @@ public class Distributor {
     List<Account> accounts;
 
     @ManyToMany
-    List<Supervisor> supervisor;
+    List<Supervisor> supervisors;
 }

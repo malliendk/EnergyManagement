@@ -8,4 +8,5 @@ import java.util.Optional;
 public interface SupervisorRepository extends JpaRepository<Supervisor, Long> {
 
     Optional<Supervisor> findByLastName(String name);
+    Optional<Supervisor> findByDistributorName(String name);
 }

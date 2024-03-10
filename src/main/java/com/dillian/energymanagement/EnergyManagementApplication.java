@@ -1,7 +1,6 @@
 package com.dillian.energymanagement;
 
-import com.dillian.energymanagement.bootstrap.AccountGenerator;
-import com.dillian.energymanagement.bootstrap.SupervisorGenerator;
+import com.dillian.energymanagement.bootstrap.SampleRecordSaver;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
@@ -13,8 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @Slf4j
 public class EnergyManagementApplication implements CommandLineRunner {
 
-    private final SupervisorGenerator supervisorGenerator;
-    private final AccountGenerator accountGenerator;
+    private final SampleRecordSaver sampleRecordSaver;
 
     public static void main(String[] args) {
         SpringApplication.run(EnergyManagementApplication.class, args);
@@ -22,7 +20,8 @@ public class EnergyManagementApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        supervisorGenerator.createWithSimpleProperties();
-        accountGenerator.generateAccounts(50);
+        sampleRecordSaver.saveAccounts();
+        sampleRecordSaver.saveSupervisors();
+        sampleRecordSaver.saveDistributors();
     }
 }

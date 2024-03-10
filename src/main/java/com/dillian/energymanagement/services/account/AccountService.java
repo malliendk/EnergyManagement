@@ -1,9 +1,8 @@
 package com.dillian.energymanagement.services.account;
 
-import com.dillian.energymanagement.bootstrap.AccountGenerator;
+import com.dillian.energymanagement.bootstrap.SampleRecordSaver;
 import com.dillian.energymanagement.entities.Account;
 import com.dillian.energymanagement.repositories.AccountRepository;
-import com.dillian.energymanagement.services.SupervisorService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,16 +13,10 @@ import java.util.List;
 public class AccountService {
 
     private final AccountRepository accountRepository;
-    private final AccountGenerator accountGenerator;
-    private final SupervisorService supervisorService;
+    private final SampleRecordSaver sampleRecordSaver;
     private final Scheduler scheduler;
 
 
-
-    public List<Account> generateAccounts(int numberOfAccounts) {
-        List<Account> accountsToGenerate = accountGenerator.generateAccounts(numberOfAccounts);
-        return accountRepository.saveAll(accountsToGenerate);
-    }
 
     public List<Account> getAll() {
         return accountRepository.findAll();
@@ -47,12 +40,20 @@ public class AccountService {
                 .toList();
     }
 
+    public List<Account> findByDistributorName(String name) {
+        return getAll()
+                .stream()
+                .filter(account -> account.getDistributor().getName().equals(name))
+                .toList();
+    }
+
     public List<Account> findBySupervisorLastName(String lastName) {
         return getAll()
                 .stream()
                 .filter(account -> account.getSupervisor().getLastName().equals(lastName))
                 .toList();
     }
+
 
     public void startOptimizeSupply() {
         scheduler.startOptimzingSupply(getAll());
@@ -64,6 +65,6 @@ public class AccountService {
 
     public List<Account> resetAccounts() {
         accountRepository.deleteAll();
-        return accountGenerator.generateAccounts(25);
+        return sampleRecordSaver.saveAccounts();
     }
 }
