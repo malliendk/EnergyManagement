@@ -11,7 +11,5 @@ public class DistributorService {
 
     private final DistributorRespository distributorRespository;
 
-    public Distributor findBySupervisorName(String name) {
-        return distributorRespository.findBySupervisorName(name).orElseThrow();
-    }
+
 }

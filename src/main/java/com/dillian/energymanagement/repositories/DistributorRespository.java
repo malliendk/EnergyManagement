@@ -7,5 +7,5 @@ import java.util.Optional;
 
 public interface DistributorRespository extends JpaRepository<Distributor, Long> {
 
-    Optional<Distributor> findBySupervisorName(String name);
+
 }

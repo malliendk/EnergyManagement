@@ -5,11 +5,15 @@ import com.dillian.energymanagement.dtos.SupervisorDto;
 import com.dillian.energymanagement.services.SupervisorDashboardService;
 import com.dillian.energymanagement.services.SupervisorService;
 import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin("http://localhost:4200")
 @RestController
 @AllArgsConstructor
 @RequestMapping("api/v1/supervisor")
+@Slf4j
 public class SupervisorController {
 
     private final SupervisorService supervisorService;
@@ -22,6 +26,7 @@ public class SupervisorController {
 
     @GetMapping("dashboard/{lastName}")
     public SupervisorDashboardDto getSupervisorDashboard(@PathVariable String lastName) {
+        log.info("dashboards");
         return supervisorDashboardService.createSupervisorDashboardDto(lastName);
     }
 }
