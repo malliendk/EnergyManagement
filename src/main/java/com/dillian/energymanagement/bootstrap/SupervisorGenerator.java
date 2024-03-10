@@ -11,18 +11,16 @@ import java.util.ArrayList;
 @AllArgsConstructor
 public class SupervisorGenerator {
 
-    private final SupervisorRepository supervisorRepository;
+    public Supervisor[] createWithSimpleProperties() {
 
-    public Supervisor[] createSupervisors() {
-
-        Supervisor supervisor1 = supervisorRepository.save(new Supervisor(1L, "Tessa", "Savours", new ArrayList<>(),
-                new ArrayList<>(), "D:\\Java projects\\Energy Management\\photos\\Tessa Savours.png"));
-        Supervisor supervisor2 = supervisorRepository.save(new Supervisor(2L, "Quillick", "Windsworth", new ArrayList<>(),
-                new ArrayList<>(), "D:\\Java projects\\Energy Management\\photos\\Quillick Windsworth.png"));
-        Supervisor supervisor3 = supervisorRepository.save(new Supervisor(2L, "Amelia", "Lupina", new ArrayList<>(),
-                new ArrayList<>(), "D:\\Java projects\\Energy Management\\photos\\Amelia Lupina.png"));
-        Supervisor supervisor4 = supervisorRepository.save(new Supervisor(2L, "Henrick", "Righthood", new ArrayList<>(),
-                new ArrayList<>(), "D:\\Java projects\\Energy Management\\photos\\Henrick Righthood.png"));
-        return new Supervisor[]{supervisor1, supervisor3, supervisor4};
+        Supervisor supervisor1 = new Supervisor(1L, "Tessa", "Savours", new ArrayList<>(),
+                new ArrayList<>(), "D:\\Java projects\\Energy Management\\photos\\Tessa Savours.png");
+        Supervisor supervisor2 = new Supervisor(2L, "Quillick", "Windsworth", new ArrayList<>(),
+                new ArrayList<>(), "D:\\Java projects\\Energy Management\\photos\\Quillick Windsworth.png");
+        Supervisor supervisor3 = new Supervisor(2L, "Amelia", "Lupina", new ArrayList<>(),
+                new ArrayList<>(), "D:\\Java projects\\Energy Management\\photos\\Amelia Lupina.png");
+        Supervisor supervisor4 = new Supervisor(2L, "Henrick", "Righthood", new ArrayList<>(),
+                new ArrayList<>(), "D:\\Java projects\\Energy Management\\photos\\Henrick Righthood.png");
+        return new Supervisor[]{supervisor1, supervisor3};
     }
 }
