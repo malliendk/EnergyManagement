@@ -19,7 +19,7 @@ public class Account {
     Long id;
     String name;
     String location;
-    private String supplyType;
+    String supplyType;
     double supplyAmount;
 
     @ManyToOne

@@ -21,11 +21,10 @@ public class Supervisor {
     Long id;
     String firstName;
     String lastName;
+    String profilePicUri;
 
     @OneToMany
     List<Account> accounts;
     @ManyToMany
     List<Distributor> distributors;
-    String profilePicUrl;
-
 }

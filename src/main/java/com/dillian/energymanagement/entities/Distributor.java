@@ -23,7 +23,6 @@ public class Distributor {
 
     @OneToMany
     List<Account> accounts;
-
     @ManyToMany
     List<Supervisor> supervisors;
 }

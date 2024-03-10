@@ -1,5 +1,6 @@
 package com.dillian.energymanagement.services.account;
 
+import com.dillian.energymanagement.dtos.AccountDto;
 import com.dillian.energymanagement.entities.Account;
 import com.dillian.energymanagement.services.supply.SupplyCategorizer;
 import com.dillian.energymanagement.services.supply.SupplyOptimizer;
@@ -23,7 +24,7 @@ public class Scheduler {
     private List<Account> accountsToBeUpdated;
 
 
-    public void startOptimzingSupply(List<Account> accounts) {
+    public void startOptimzingSupply(List<AccountDto> accounts) {
         long initialDelay = 0;
         long period = 1;
 

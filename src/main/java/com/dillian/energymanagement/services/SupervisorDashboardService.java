@@ -28,7 +28,7 @@ public class SupervisorDashboardService {
         supervisorDashboardDto.setFirstName(supervisor.getFirstName());
         supervisorDashboardDto.setLastName(supervisor.getLastName());
 
-        List<AccountsPerLocationDto> accountsPerLocationDtos = accountService.findBySupervisorLastName(lastName)
+        List<AccountsPerLocationDto> accountsPerLocationDtos = accountService.findAllBySupervisorLastName(lastName)
                 .stream()
                 .collect(Collectors.groupingBy(Account::getLocation))
                 .entrySet()

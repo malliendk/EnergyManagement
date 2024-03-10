@@ -1,7 +1,9 @@
 package com.dillian.energymanagement.services.account;
 
 import com.dillian.energymanagement.bootstrap.SampleRecordSaver;
+import com.dillian.energymanagement.dtos.AccountDto;
 import com.dillian.energymanagement.entities.Account;
+import com.dillian.energymanagement.mappers.DtoMapper;
 import com.dillian.energymanagement.repositories.AccountRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,41 +15,45 @@ import java.util.List;
 public class AccountService {
 
     private final AccountRepository accountRepository;
+    private final DtoMapper<Account, AccountDto> mapper;
     private final SampleRecordSaver sampleRecordSaver;
     private final Scheduler scheduler;
 
 
 
-    public List<Account> getAll() {
-        return accountRepository.findAll();
+    public List<AccountDto> getAll() {
+        return accountRepository.findAll()
+                .stream()
+                .map(mapper::toDto)
+                .toList();
     }
 
-    public List<Account> getShortageAccounts() {
+    public List<AccountDto> getShortageAccounts() {
         return getAll().stream()
                 .filter(account -> account.getSupplyType().equals("shortage"))
                 .toList();
     }
 
-    public List<Account> getOptimalAccounts() {
+    public List<AccountDto> getOptimalAccounts() {
         return getAll().stream()
                 .filter(account -> account.getSupplyType().equals("optimal"))
                 .toList();
     }
 
-    public List<Account> getSurplusAccounts() {
+    public List<AccountDto> getSurplusAccounts() {
         return getAll().stream()
                 .filter(account -> account.getSupplyType().equals("surplus"))
                 .toList();
     }
 
-    public List<Account> findByDistributorName(String name) {
+    public List<AccountDto> findAllByDistributorName(String name) {
         return getAll()
                 .stream()
                 .filter(account -> account.getDistributor().getName().equals(name))
                 .toList();
     }
 
-    public List<Account> findBySupervisorLastName(String lastName) {
+    public List<AccountDto> findAllBySupervisorLastName(String lastName) {
         return getAll()
                 .stream()
                 .filter(account -> account.getSupervisor().getLastName().equals(lastName))

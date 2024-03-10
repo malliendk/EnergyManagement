@@ -39,7 +39,7 @@ public class RelationshipSetter {
 
     public List<Supervisor> setForSupervisors() {
         supervisors.forEach(supervisor ->
-                supervisor.setAccounts(accountService.findBySupervisorLastName(supervisor.getLastName())));
+                supervisor.setAccounts(accountService.findAllBySupervisorLastName(supervisor.getLastName())));
         supervisors.forEach(supervisor ->
                 supervisor.setDistributors(
                         List.of(distributorService.findByName("Stedin"), distributorService.findByName("Liander"))));
@@ -48,7 +48,7 @@ public class RelationshipSetter {
 
     public List<Distributor> setForDistributors() {
         distributors.forEach(distributor ->
-                distributor.setAccounts(accountService.findByDistributorName(distributor.getName())));
+                distributor.setAccounts(accountService.findAllByDistributorName(distributor.getName())));
         distributors.forEach(distributor ->
                 distributor.setSupervisors(
                         List.of(supervisorService.findById(1L), supervisorService.findById(3L))));
