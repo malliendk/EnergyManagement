@@ -19,6 +19,7 @@ public class Distributor {
     @GeneratedValue
     Long id;
     String name;
+    String logoUri;
 
     @OneToMany
     List<Account> accounts;

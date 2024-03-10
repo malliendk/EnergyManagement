@@ -1,14 +1,11 @@
 package com.dillian.energymanagement.bootstrap;
 
 import com.dillian.energymanagement.entities.Supervisor;
-import com.dillian.energymanagement.repositories.SupervisorRepository;
-import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 
 @Component
-@AllArgsConstructor
 public class SupervisorGenerator {
 
     public Supervisor[] createWithSimpleProperties() {

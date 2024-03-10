@@ -5,7 +5,6 @@ import com.dillian.energymanagement.dtos.SupervisorDto;
 import com.dillian.energymanagement.services.SupervisorDashboardService;
 import com.dillian.energymanagement.services.SupervisorService;
 import lombok.AllArgsConstructor;
-import lombok.extern.log4j.Log4j;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 

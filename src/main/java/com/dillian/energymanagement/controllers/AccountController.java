@@ -4,8 +4,6 @@ import com.dillian.energymanagement.dtos.AccountGenerateRequestDto;
 import com.dillian.energymanagement.entities.Account;
 import com.dillian.energymanagement.services.account.AccountService;
 import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

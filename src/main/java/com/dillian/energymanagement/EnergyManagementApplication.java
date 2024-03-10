@@ -1,7 +1,7 @@
 package com.dillian.energymanagement;
 
-import com.dillian.energymanagement.bootstrap.SupervisorGenerator;
 import com.dillian.energymanagement.bootstrap.AccountGenerator;
+import com.dillian.energymanagement.bootstrap.SupervisorGenerator;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
