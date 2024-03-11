@@ -1,8 +1,6 @@
 package com.dillian.energymanagement.services.supply;
 
-import com.dillian.energymanagement.dtos.AccountDto;
 import com.dillian.energymanagement.entities.Account;
-import com.dillian.energymanagement.mappers.DtoMapper;
 import com.dillian.energymanagement.repositories.AccountRepository;
 import com.dillian.energymanagement.utils.Constants;
 import lombok.AllArgsConstructor;
@@ -16,27 +14,25 @@ import java.util.Random;
 public class SupplyOptimizer {
 
     private final AccountRepository accountRepository;
-    private final DtoMapper<Account, AccountDto> mapper;
     private static final Random random = new Random();
 
-    public List<AccountDto> updateSupplyAmount(List<AccountDto> accounts) {
-        accounts.forEach(accountDto -> {
-            double supplyAmount = accountDto.getSupplyAmount();
+    public List<Account> updateSupplyAmount(List<Account> accounts) {
+        accounts.forEach(account -> {
+            double supplyAmount = account.getSupplyAmount();
             double newSupplyAmount = 0;
-            switch (accountDto.getSupplyType()) {
+            switch (account.getSupplyType()) {
                 case Constants.SHORTAGE -> newSupplyAmount = supplyAmount + supplyAmount * 0.25;
-                case Constants.OPTIMAL -> newSupplyAmount = randomForOptimal(accountDto);
+                case Constants.OPTIMAL -> newSupplyAmount = randomForOptimal(account);
                 case Constants.SURPLUS -> newSupplyAmount = supplyAmount - supplyAmount * 0.25;
                 default -> throw new RuntimeException("supplyType did not match a valid String");
             }
-            accountDto.setSupplyAmount(newSupplyAmount);
-            Account account = mapper.toEntity(accountDto);
+            account.setSupplyAmount(newSupplyAmount);
             accountRepository.save(account);
         });
         return accounts;
     }
 
-    private double randomForOptimal(AccountDto account) {
+    private double randomForOptimal(Account account) {
         double supplyAmount = account.getSupplyAmount();
         if (supplyAmount < 1) {
             return supplyAmount + selectRandomValue(new double[] {0, 0.05, 0.1, 0.25, 0.5});

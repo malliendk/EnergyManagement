@@ -8,5 +8,5 @@ import java.util.Optional;
 public interface DistributorRespository extends JpaRepository<Distributor, Long> {
 
     Optional<Distributor> findByName(String name);
-    Optional<Distributor> findBySupervisorLastName(String lastName);
+    Optional<Distributor> findAllBySupervisorLastName(String lastName);
 }

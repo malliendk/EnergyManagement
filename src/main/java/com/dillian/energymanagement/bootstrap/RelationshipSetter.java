@@ -3,6 +3,7 @@ package com.dillian.energymanagement.bootstrap;
 import com.dillian.energymanagement.entities.Account;
 import com.dillian.energymanagement.entities.Distributor;
 import com.dillian.energymanagement.entities.Supervisor;
+import com.dillian.energymanagement.repositories.AccountRepository;
 import com.dillian.energymanagement.services.DistributorService;
 import com.dillian.energymanagement.services.SupervisorService;
 import com.dillian.energymanagement.services.account.AccountService;
@@ -21,6 +22,7 @@ public class RelationshipSetter {
     private final AccountGenerator accountGenerator;
     private final DistributorGenerator distributorGenerator;
     private final SupervisorGenerator supervisorGenerator;
+    private final AccountRepository accountRepository;
     private final AccountService accountService;
     private final DistributorService distributorService;
     private final SupervisorService supervisorService;
@@ -39,7 +41,10 @@ public class RelationshipSetter {
 
     public List<Supervisor> setForSupervisors() {
         supervisors.forEach(supervisor ->
-                supervisor.setAccounts(accountService.findAllBySupervisorLastName(supervisor.getLastName())));
+                supervisor.setAccounts(accountRepository.findAll()
+                        .stream()
+                        .filter(account -> account.getSupervisor().getLastName().equals(supervisor.getLastName()))
+                        .toList()));
         supervisors.forEach(supervisor ->
                 supervisor.setDistributors(
                         List.of(distributorService.findByName("Stedin"), distributorService.findByName("Liander"))));
@@ -48,22 +53,26 @@ public class RelationshipSetter {
 
     public List<Distributor> setForDistributors() {
         distributors.forEach(distributor ->
-                distributor.setAccounts(accountService.findAllByDistributorName(distributor.getName())));
+                distributor.setAccounts(accountRepository.findAll()
+                        .stream()
+                        .filter(account ->
+                                account.getDistributor().getName().equals("Stedin") ||
+                                        account.getDistributor().getName().equals("Liander"))
+                        .toList()));
         distributors.forEach(distributor ->
-                distributor.setSupervisors(
-                        List.of(supervisorService.findById(1L), supervisorService.findById(3L))));
+                distributor.setSupervisors());
         return distributors;
-    }
-
-    private Distributor pickRandomDistributor() {
-        Distributor[] selectedDistributors = new Distributor[]{distributors.get(0), distributors.get(1)};
-        int randomIndex = random.nextInt();
-        return selectedDistributors[randomIndex];
     }
 
     private Supervisor pickRandomSupervisor() {
         Supervisor[] selectedSupervisors = new Supervisor[]{supervisors.get(0), supervisors.get(2)};
         int randomIndex = random.nextInt();
         return selectedSupervisors[randomIndex];
+    }
+
+    private Distributor pickRandomDistributor() {
+        Distributor[] selectedDistributors = new Distributor[]{distributors.get(0), distributors.get(1)};
+        int randomIndex = random.nextInt();
+        return selectedDistributors[randomIndex];
     }
 }

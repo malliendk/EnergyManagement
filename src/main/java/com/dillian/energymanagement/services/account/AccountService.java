@@ -21,6 +21,12 @@ public class AccountService {
 
 
 
+    public List<Account> getAllInternal() {
+        return accountRepository.findAll()
+                .stream()
+                .toList();
+    }
+
     public List<AccountDto> getAll() {
         return accountRepository.findAll()
                 .stream()
@@ -28,23 +34,6 @@ public class AccountService {
                 .toList();
     }
 
-    public List<AccountDto> getShortageAccounts() {
-        return getAll().stream()
-                .filter(account -> account.getSupplyType().equals("shortage"))
-                .toList();
-    }
-
-    public List<AccountDto> getOptimalAccounts() {
-        return getAll().stream()
-                .filter(account -> account.getSupplyType().equals("optimal"))
-                .toList();
-    }
-
-    public List<AccountDto> getSurplusAccounts() {
-        return getAll().stream()
-                .filter(account -> account.getSupplyType().equals("surplus"))
-                .toList();
-    }
 
     public List<AccountDto> findAllByDistributorName(String name) {
         return getAll()
