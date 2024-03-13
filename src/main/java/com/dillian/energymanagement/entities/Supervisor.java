@@ -23,8 +23,9 @@ public class Supervisor {
     String lastName;
     String profilePicUri;
 
-    @OneToMany
-    List<Account> accounts;
+    @ManyToOne
+    Distributor distributors;
     @ManyToMany
-    List<Distributor> distributors;
+    List<Locality> localities;
+
 }

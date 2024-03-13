@@ -7,10 +7,10 @@ import java.util.List;
 
 @Getter
 @Setter
-public class DistributorDto {
+public class LocalityDto {
 
     Long id;
     String name;
-    String logoUri;
-    List<SupervisorDto> supervisors;
+    DistributorDto distributorDto;
+    List<AccountDto> accountDtos;
 }

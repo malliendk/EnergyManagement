@@ -4,10 +4,8 @@ import com.dillian.energymanagement.entities.Account;
 import com.dillian.energymanagement.entities.Distributor;
 import com.dillian.energymanagement.entities.Supervisor;
 import com.dillian.energymanagement.repositories.AccountRepository;
-import com.dillian.energymanagement.services.DistributorService;
-import com.dillian.energymanagement.services.SupervisorService;
-import com.dillian.energymanagement.services.account.AccountService;
-import com.dillian.energymanagement.utils.Constants;
+import com.dillian.energymanagement.repositories.DistributorRepository;
+import com.dillian.energymanagement.repositories.SupervisorRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -23,17 +21,16 @@ public class RelationshipSetter {
     private final DistributorGenerator distributorGenerator;
     private final SupervisorGenerator supervisorGenerator;
     private final AccountRepository accountRepository;
-    private final AccountService accountService;
-    private final DistributorService distributorService;
-    private final SupervisorService supervisorService;
+    private final DistributorRepository distributorRepository;
+    private final SupervisorRepository supervisorRepository;
     private final List<Distributor> distributors = Arrays.asList(distributorGenerator.createWithBasicProperties());
     private final List<Supervisor> supervisors = Arrays.asList(supervisorGenerator.createWithBasicProperties());
 
     private static final Random random = new Random();
 
 
-    public List<Account> setForAccounts() {
-        final List<Account> accounts = accountGenerator.createWithBasicProperties(Constants.numberOfAccounts);
+    public List<Account> setForAccounts(int numberOfAccounts) {
+        final List<Account> accounts = accountGenerator.createWithBasicProperties(numberOfAccounts);
         accounts.forEach(account -> account.setDistributor(pickRandomDistributor()));
         accounts.forEach(account -> account.setSupervisor(pickRandomSupervisor()));
         return accounts;
@@ -45,9 +42,12 @@ public class RelationshipSetter {
                         .stream()
                         .filter(account -> account.getSupervisor().getLastName().equals(supervisor.getLastName()))
                         .toList()));
-        supervisors.forEach(supervisor ->
-                supervisor.setDistributors(
-                        List.of(distributorService.findByName("Stedin"), distributorService.findByName("Liander"))));
+        supervisors.get(0).setDistributors(List.of(
+                distributorRepository.findByName("Stedin").orElseThrow(),
+                distributorRepository.findByName("Liander").orElseThrow()));
+        supervisors.get(1).setDistributors(List.of(
+                distributorRepository.findByName("Stedin").orElseThrow(),
+                distributorRepository.findByName("Liander").orElseThrow()));
         return supervisors;
     }
 
@@ -59,8 +59,12 @@ public class RelationshipSetter {
                                 account.getDistributor().getName().equals("Stedin") ||
                                         account.getDistributor().getName().equals("Liander"))
                         .toList()));
-        distributors.forEach(distributor ->
-                distributor.setSupervisors());
+        distributors.get(0).setSupervisors(List.of(
+                supervisorRepository.findByLastName("Lupina").orElseThrow(),
+                supervisorRepository.findByLastName("Savours").orElseThrow()));
+        distributors.get(1).setSupervisors(List.of(
+                supervisorRepository.findByLastName("Lupina").orElseThrow(),
+                supervisorRepository.findByLastName("Savours").orElseThrow()));
         return distributors;
     }
 

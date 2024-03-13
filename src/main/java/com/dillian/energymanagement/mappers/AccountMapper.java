@@ -7,6 +7,7 @@ import com.dillian.energymanagement.entities.Account;
 import com.dillian.energymanagement.entities.Distributor;
 import com.dillian.energymanagement.entities.Supervisor;
 import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Component;
 
 @AllArgsConstructor
 public class AccountMapper implements DtoMapper<Account, AccountDto> {

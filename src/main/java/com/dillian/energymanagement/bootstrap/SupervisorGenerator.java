@@ -10,14 +10,14 @@ public class SupervisorGenerator {
 
     public Supervisor[] createWithBasicProperties() {
 
-        Supervisor supervisor1 = new Supervisor(1L, "Tessa", "Savours", new ArrayList<>(),
-                new ArrayList<>(), "D:\\Java projects\\Energy Management\\photos\\Tessa Savours.png");
-        Supervisor supervisor2 = new Supervisor(2L, "Quillick", "Windsworth", new ArrayList<>(),
-                new ArrayList<>(), "D:\\Java projects\\Energy Management\\photos\\Quillick Windsworth.png");
-        Supervisor supervisor3 = new Supervisor(2L, "Amelia", "Lupina", new ArrayList<>(),
-                new ArrayList<>(), "D:\\Java projects\\Energy Management\\photos\\Amelia Lupina.png");
-        Supervisor supervisor4 = new Supervisor(2L, "Henrick", "Righthood", new ArrayList<>(),
-                new ArrayList<>(), "D:\\Java projects\\Energy Management\\photos\\Henrick Righthood.png");
+        Supervisor supervisor1 = new Supervisor(1L, "Amelia", "Lupina",
+                "D:\\Java projects\\Energy Management\\photos\\Amelia Lupina.png", null, null );
+        Supervisor supervisor2 = new Supervisor(2L, "Tessa", "Savours",
+                "D:\\Java projects\\Energy Management\\photos\\Tessa Savours.png", null, null);
+        Supervisor supervisor3 = new Supervisor(3L, "Quillick", "Windsworth",
+                "D:\\Java projects\\Energy Management\\photos\\Quillick Windsworth.png", null, null);
+        Supervisor supervisor4 = new Supervisor(4L, "Henrick", "Righthood",
+                "D:\\Java projects\\Energy Management\\photos\\Henrick Righthood.png", null, null);
         return new Supervisor[]{supervisor1, supervisor2, supervisor3, supervisor4};
     }
 }

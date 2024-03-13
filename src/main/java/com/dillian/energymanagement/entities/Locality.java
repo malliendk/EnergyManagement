@@ -13,16 +13,16 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Distributor {
+public class Locality {
 
     @Id
     @GeneratedValue
     Long id;
     String name;
-    String logoUri;
 
-    @OneToMany
-    List<Supervisor> supervisors;
+    @ManyToMany
+    List<Supervisor> supervisor;
+
     @OneToMany
     List<Account> accounts;
 }

@@ -1,9 +1,6 @@
 package com.dillian.energymanagement.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -18,12 +15,9 @@ public class Account {
     @GeneratedValue
     Long id;
     String name;
-    String location;
     String supplyType;
     double supplyAmount;
 
     @ManyToOne
-    Distributor distributor;
-    @ManyToOne
-    Supervisor supervisor;
+    Locality locality;
 }

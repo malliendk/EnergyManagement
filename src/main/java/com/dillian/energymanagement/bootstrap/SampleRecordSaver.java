@@ -4,7 +4,7 @@ import com.dillian.energymanagement.entities.Account;
 import com.dillian.energymanagement.entities.Distributor;
 import com.dillian.energymanagement.entities.Supervisor;
 import com.dillian.energymanagement.repositories.AccountRepository;
-import com.dillian.energymanagement.repositories.DistributorRespository;
+import com.dillian.energymanagement.repositories.DistributorRepository;
 import com.dillian.energymanagement.repositories.SupervisorRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,10 +18,10 @@ public class SampleRecordSaver {
     private final RelationshipSetter relationshipSetter;
     private final AccountRepository accountRepository;
     private final SupervisorRepository supervisorRepository;
-    private final DistributorRespository distributorRespository;
+    private final DistributorRepository distributorRepository;
 
-    public List<Account> saveAccounts() {
-        return accountRepository.saveAll(relationshipSetter.setForAccounts());
+    public List<Account> saveAccounts(int numberOfAccounts) {
+        return accountRepository.saveAll(relationshipSetter.setForAccounts(numberOfAccounts));
     }
 
     public List<Supervisor> saveSupervisors() {
@@ -29,6 +29,6 @@ public class SampleRecordSaver {
     }
 
     public List<Distributor> saveDistributors() {
-        return distributorRespository.saveAll(relationshipSetter.setForDistributors());
+        return distributorRepository.saveAll(relationshipSetter.setForDistributors());
     }
 }

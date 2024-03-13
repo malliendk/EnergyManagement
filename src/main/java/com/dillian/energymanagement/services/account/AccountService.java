@@ -35,10 +35,24 @@ public class AccountService {
     }
 
 
-    public List<AccountDto> findAllByDistributorName(String name) {
+    public List<AccountDto> getShortageAccounts() {
         return getAll()
                 .stream()
-                .filter(account -> account.getDistributor().getName().equals(name))
+                .filter(accountDto -> accountDto.getSupplyType().equals("shortage"))
+                .toList();
+    }
+
+    public List<AccountDto> getOptimalAccounts() {
+        return getAll()
+                .stream()
+                .filter(accountDto -> accountDto.getSupplyType().equals("optimal"))
+                .toList();
+    }
+
+    public List<AccountDto> getSurplusAccounts() {
+        return getAll()
+                .stream()
+                .filter(accountDto -> accountDto.getSupplyType().equals("surplus"))
                 .toList();
     }
 
@@ -49,17 +63,19 @@ public class AccountService {
                 .toList();
     }
 
-
     public void startOptimizeSupply() {
-        scheduler.startOptimzingSupply(getAll());
+        scheduler.startOptimzingSupply(getAllInternal());
     }
 
     public void stopOptimizeSupply() {
         scheduler.stopOptimzingSupply();
     }
 
-    public List<Account> resetAccounts() {
+    public List<AccountDto> resetAccounts() {
         accountRepository.deleteAll();
-        return sampleRecordSaver.saveAccounts();
+        return sampleRecordSaver.saveAccounts(50)
+                .stream()
+                .map(mapper::toDto)
+                .toList();
     }
 }
