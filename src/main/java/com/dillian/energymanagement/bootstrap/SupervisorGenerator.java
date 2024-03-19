@@ -1,23 +1,29 @@
 package com.dillian.energymanagement.bootstrap;
 
 import com.dillian.energymanagement.entities.Supervisor;
-import org.springframework.stereotype.Component;
+import com.dillian.energymanagement.repositories.SupervisorRepository;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.util.List;
 
-@Component
+@Service
+@AllArgsConstructor
 public class SupervisorGenerator {
 
-    public Supervisor[] createWithBasicProperties() {
+    private final SupervisorRepository repository;
 
-        Supervisor supervisor1 = new Supervisor(1L, "Amelia", "Lupina",
+    public List<Supervisor> createWithBasicProperties() {
+
+        Supervisor supervisor1 = new Supervisor("Amelia", "Lupina",
                 "D:\\Java projects\\Energy Management\\photos\\Amelia Lupina.png", null, null );
-        Supervisor supervisor2 = new Supervisor(2L, "Tessa", "Savours",
+        Supervisor supervisor2 = new Supervisor("Tessa", "Savours",
                 "D:\\Java projects\\Energy Management\\photos\\Tessa Savours.png", null, null);
-        Supervisor supervisor3 = new Supervisor(3L, "Quillick", "Windsworth",
+        Supervisor supervisor3 = new Supervisor("Quillick", "Windsworth",
                 "D:\\Java projects\\Energy Management\\photos\\Quillick Windsworth.png", null, null);
-        Supervisor supervisor4 = new Supervisor(4L, "Henrick", "Righthood",
+        Supervisor supervisor4 = new Supervisor("Henrick", "Righthood",
                 "D:\\Java projects\\Energy Management\\photos\\Henrick Righthood.png", null, null);
-        return new Supervisor[]{supervisor1, supervisor2, supervisor3, supervisor4};
+        final List<Supervisor> supervisors = List.of(supervisor1, supervisor2, supervisor3, supervisor4);
+        return repository.saveAll(supervisors);
     }
 }

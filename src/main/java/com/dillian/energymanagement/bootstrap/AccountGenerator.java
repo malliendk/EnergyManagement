@@ -1,34 +1,31 @@
 package com.dillian.energymanagement.bootstrap;
 
 import com.dillian.energymanagement.entities.Account;
-import com.dillian.energymanagement.utils.Localities;
+import com.dillian.energymanagement.repositories.AccountRepository;
+import com.dillian.energymanagement.services.account.supply.SupplyCategorizer;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 @Service
+@AllArgsConstructor
 public class AccountGenerator {
 
-    private static final Random random = new Random();
-
+    private final SupplyCategorizer supplyCategorizer;
+    private final AccountRepository repository;
 
     public List<Account> createWithBasicProperties(int numberOfAccounts) {
         List<Account> accounts = new ArrayList<>();
         for (long i = 0; i < numberOfAccounts; i++) {
             Account account = new Account();
-            account.setId(i);
-            account.setLocation(getRandomLocation());
             account.setSupplyAmount(getRandomSupplyAmount());
+            supplyCategorizer.categorize(account);
+            repository.save(account);
             accounts.add(account);
         }
         return accounts;
-    }
-
-    private String getRandomLocation() {
-        int randomElement = random.nextInt(Localities.localities.length);
-        return Localities.localities[randomElement];
     }
 
     private double getRandomSupplyAmount() {

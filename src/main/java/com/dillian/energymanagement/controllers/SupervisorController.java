@@ -1,30 +1,46 @@
 package com.dillian.energymanagement.controllers;
 
-import com.dillian.energymanagement.dtos.SupervisorDashboardDto;
 import com.dillian.energymanagement.dtos.SupervisorDto;
-import com.dillian.energymanagement.services.SupervisorDashboardService;
-import com.dillian.energymanagement.services.SupervisorService;
+import com.dillian.energymanagement.services.supervisor.SupervisorManagerFacade;
+import com.dillian.energymanagement.services.supervisor.SupervisorService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @AllArgsConstructor
-@RequestMapping("api/v1/supervisor")
+@RequestMapping("api/v1/supervisors")
 @Slf4j
 public class SupervisorController {
 
     private final SupervisorService supervisorService;
-    private final SupervisorDashboardService supervisorDashboardService;
+    private final SupervisorManagerFacade supervisorManagerFacade;
 
-    @GetMapping("{lastName}")
-    public SupervisorDto findByLastName(@PathVariable String lastName) {
-        return supervisorService.findByLastName(lastName);
+    @PostMapping()
+    public SupervisorDto create(@RequestBody SupervisorDto dto) {
+        return supervisorManagerFacade.mapAndCreate(dto);
     }
 
-    @GetMapping("dashboard/{lastName}")
-    public SupervisorDashboardDto getSupervisorDashboard(@PathVariable String lastName) {
-        log.info("dashboards");
-        return supervisorDashboardService.createSupervisorDashboardDto(lastName);
+    @GetMapping()
+    public List<SupervisorDto> findAll() {
+        return supervisorService.findAll();
+    }
+
+    @GetMapping("{id}")
+    public SupervisorDto getById(Long id) {
+        return supervisorService.findById(id);
+    }
+
+
+    @PutMapping("{id}")
+    public SupervisorDto update(@PathVariable Long id, @RequestBody SupervisorDto dto) {
+        return supervisorManagerFacade.mapAndUpdate(id, dto);
+    }
+
+    @DeleteMapping("{id}")
+    public void delete(@PathVariable Long id) {
+        supervisorService.delete(id);
     }
 }

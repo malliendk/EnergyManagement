@@ -12,5 +12,6 @@ public class DistributorDto {
     Long id;
     String name;
     String logoUri;
-    List<SupervisorDto> supervisors;
+    List<String> supervisorNames;
+    List<Long> accountIds;
 }

@@ -1,10 +1,8 @@
 package com.dillian.energymanagement.controllers;
 
-import com.dillian.energymanagement.bootstrap.SampleRecordSaver;
 import com.dillian.energymanagement.dtos.AccountDto;
-import com.dillian.energymanagement.dtos.AccountGenerateRequestDto;
-import com.dillian.energymanagement.entities.Account;
-import com.dillian.energymanagement.services.account.AccountService;
+import com.dillian.energymanagement.services.account.AccountManagerFacade;
+import com.dillian.energymanagement.services.account.AccountServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,47 +13,62 @@ import java.util.List;
 @RequestMapping("api/v1/accounts")
 public class AccountController {
 
-    private final AccountService accountService;
-    private final SampleRecordSaver recordSaver;
+    private final AccountServiceImpl accountServiceImpl;
+    private final AccountManagerFacade accountManagerFacade;
 
 
     @PostMapping()
-    public List<Account> generateAccounts(@RequestBody AccountGenerateRequestDto request) {
-        return recordSaver.saveAccounts(request.getNumberOfAccounts());
+    public AccountDto create(AccountDto dto) {
+        return accountManagerFacade.mapAndCreate(dto);
     }
+
+//    @PostMapping("generate")
+//    public List<Account> generateAccounts(@RequestBody AccountGenerateRequestDto request) {
+//        return recordSaver.saveAccounts(request.getNumberOfAccounts());
+//    }
 
     @GetMapping()
     public List<AccountDto> getAll() {
-        return accountService.getAll();
+        return accountServiceImpl.findAll();
     }
 
     @GetMapping("shortage")
     public List<AccountDto> getShortageAccounts() {
-        return accountService.getShortageAccounts();
+        return accountServiceImpl.getShortageAccounts();
     }
 
     @GetMapping("optimal")
     public List<AccountDto> getOptimalAccounts() {
-        return accountService.getOptimalAccounts();
+        return accountServiceImpl.getOptimalAccounts();
     }
 
     @GetMapping("surplus")
     public List<AccountDto> getSurplusAccounts() {
-        return accountService.getSurplusAccounts();
+        return accountServiceImpl.getSurplusAccounts();
     }
 
-    @GetMapping("reset")
-    public List<AccountDto> resetAccounts() {
-        return accountService.resetAccounts();
+//    @GetMapping("reset")
+//    public List<AccountDto> resetAccounts() {
+//        return accountServiceImpl.resetAccounts();
+//    }
+
+    @PutMapping("{id}")
+    public AccountDto update(@PathVariable Long id, @RequestBody AccountDto dto) {
+        return accountManagerFacade.mapAndUpdate(id, dto);
+    }
+
+    @DeleteMapping("{id}")
+    public void delete(@PathVariable Long id) {
+        accountServiceImpl.delete(id);
     }
 
     @PutMapping("optimize/start")
     public void startOptimizeSupply() {
-        accountService.startOptimizeSupply();
+        accountServiceImpl.startOptimizeSupply();
     }
 
     @PutMapping("optimize/stop")
     public void stopOptimizeSupply() {
-        accountService.stopOptimizeSupply();
+        accountServiceImpl.stopOptimizeSupply();
     }
 }

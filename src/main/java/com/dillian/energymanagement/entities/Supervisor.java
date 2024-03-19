@@ -1,7 +1,6 @@
 package com.dillian.energymanagement.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,7 +11,6 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 public class Supervisor {
 
 
@@ -24,8 +22,15 @@ public class Supervisor {
     String profilePicUri;
 
     @ManyToOne
-    Distributor distributors;
+    Distributor distributor;
     @ManyToMany
     List<Locality> localities;
 
+    public Supervisor(final String firstName, final String lastName, final String profilePicUri, final Distributor distributor, final List<Locality> localities) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.profilePicUri = profilePicUri;
+        this.distributor = distributor;
+        this.localities = localities;
+    }
 }

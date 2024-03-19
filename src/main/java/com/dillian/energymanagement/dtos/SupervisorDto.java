@@ -13,6 +13,6 @@ public class SupervisorDto {
     String firstName;
     String lastName;
     String profilePicUri;
-    List<AccountDto> accounts;
-    List<DistributorDto> distributors;
+    String distributorName;
+    List<String> localitieNames;
 }

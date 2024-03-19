@@ -1,81 +1,30 @@
 package com.dillian.energymanagement.services.account;
 
-import com.dillian.energymanagement.bootstrap.SampleRecordSaver;
 import com.dillian.energymanagement.dtos.AccountDto;
 import com.dillian.energymanagement.entities.Account;
-import com.dillian.energymanagement.mappers.DtoMapper;
-import com.dillian.energymanagement.repositories.AccountRepository;
-import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
-@AllArgsConstructor
-public class AccountService {
+public interface AccountService {
+    AccountDto create(Account account);
 
-    private final AccountRepository accountRepository;
-    private final DtoMapper<Account, AccountDto> mapper;
-    private final SampleRecordSaver sampleRecordSaver;
-    private final Scheduler scheduler;
+    List<AccountDto> findAll();
 
+    AccountDto findById(Long id);
 
+    List<AccountDto> getShortageAccounts();
 
-    public List<Account> getAllInternal() {
-        return accountRepository.findAll()
-                .stream()
-                .toList();
-    }
+    List<AccountDto> getOptimalAccounts();
 
-    public List<AccountDto> getAll() {
-        return accountRepository.findAll()
-                .stream()
-                .map(mapper::toDto)
-                .toList();
-    }
+    List<AccountDto> getSurplusAccounts();
 
+    AccountDto update(Long id, Account account);
 
-    public List<AccountDto> getShortageAccounts() {
-        return getAll()
-                .stream()
-                .filter(accountDto -> accountDto.getSupplyType().equals("shortage"))
-                .toList();
-    }
+    void delete(Long id);
 
-    public List<AccountDto> getOptimalAccounts() {
-        return getAll()
-                .stream()
-                .filter(accountDto -> accountDto.getSupplyType().equals("optimal"))
-                .toList();
-    }
+    void startOptimizeSupply();
 
-    public List<AccountDto> getSurplusAccounts() {
-        return getAll()
-                .stream()
-                .filter(accountDto -> accountDto.getSupplyType().equals("surplus"))
-                .toList();
-    }
+    void stopOptimizeSupply();
 
-    public List<AccountDto> findAllBySupervisorLastName(String lastName) {
-        return getAll()
-                .stream()
-                .filter(account -> account.getSupervisor().getLastName().equals(lastName))
-                .toList();
-    }
-
-    public void startOptimizeSupply() {
-        scheduler.startOptimzingSupply(getAllInternal());
-    }
-
-    public void stopOptimizeSupply() {
-        scheduler.stopOptimzingSupply();
-    }
-
-    public List<AccountDto> resetAccounts() {
-        accountRepository.deleteAll();
-        return sampleRecordSaver.saveAccounts(50)
-                .stream()
-                .map(mapper::toDto)
-                .toList();
-    }
+//    List<AccountDto> resetAccounts();
 }

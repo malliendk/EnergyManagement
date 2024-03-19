@@ -1,4 +1,4 @@
-package com.dillian.energymanagement.services.supply;
+package com.dillian.energymanagement.services.account.supply;
 
 import com.dillian.energymanagement.entities.Account;
 import com.dillian.energymanagement.repositories.AccountRepository;

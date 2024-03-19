@@ -8,26 +8,21 @@ import com.dillian.energymanagement.entities.Account;
 import com.dillian.energymanagement.entities.Distributor;
 import com.dillian.energymanagement.entities.Supervisor;
 import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Component;
 
+@Component
 @AllArgsConstructor
 public class DistributorMapper implements DtoMapper<Distributor, DistributorDto> {
 
     private final DtoMapper<Account, AccountDto> accountMapper;
     private final DtoMapper<Supervisor, SupervisorDto> supervisorMapper;
+
     @Override
     public Distributor toEntity(final DistributorDto dto) {
         Distributor distributor = new Distributor();
         distributor.setId(dto.getId());
         distributor.setName(dto.getName());
         distributor.setLogoUri(dto.getLogoUri());
-        distributor.setAccounts(dto.getAccounts()
-                .stream()
-                .map(accountMapper::toEntity)
-                .toList());
-        distributor.setSupervisors(dto.getSupervisors()
-                .stream()
-                .map(supervisorMapper::toEntity)
-                .toList());
         return distributor;
     }
 
@@ -37,13 +32,13 @@ public class DistributorMapper implements DtoMapper<Distributor, DistributorDto>
         dto.setId(distributor.getId());
         dto.setName(distributor.getName());
         dto.setLogoUri(distributor.getLogoUri());
-        dto.setAccounts(distributor.getAccounts()
+        dto.setSupervisorNames(distributor.getSupervisors()
                 .stream()
-                .map(accountMapper::toDto)
+                .map(Supervisor::getLastName)
                 .toList());
-        dto.setSupervisors(distributor.getSupervisors()
+        dto.setAccountIds(distributor.getAccounts()
                 .stream()
-                .map(supervisorMapper::toDto)
+                .map(Account::getId)
                 .toList());
         return dto;
     }

@@ -11,6 +11,6 @@ public class LocalityDto {
 
     Long id;
     String name;
-    DistributorDto distributorDto;
-    List<AccountDto> accountDtos;
+    List<String> supervisorNames;
+    List<Long> accountIds;
 }

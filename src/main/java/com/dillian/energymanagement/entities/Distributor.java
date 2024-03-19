@@ -1,7 +1,9 @@
 package com.dillian.energymanagement.entities;
 
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,7 +14,6 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 public class Distributor {
 
     @Id
@@ -25,4 +26,11 @@ public class Distributor {
     List<Supervisor> supervisors;
     @OneToMany
     List<Account> accounts;
+
+    public Distributor(final String name, final String logoUri, final List<Supervisor> supervisors, final List<Account> accounts) {
+        this.name = name;
+        this.logoUri = logoUri;
+        this.supervisors = supervisors;
+        this.accounts = accounts;
+    }
 }

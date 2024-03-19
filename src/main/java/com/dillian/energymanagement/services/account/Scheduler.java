@@ -1,8 +1,8 @@
 package com.dillian.energymanagement.services.account;
 
 import com.dillian.energymanagement.entities.Account;
-import com.dillian.energymanagement.services.supply.SupplyCategorizer;
-import com.dillian.energymanagement.services.supply.SupplyOptimizer;
+import com.dillian.energymanagement.services.account.supply.SupplyCategorizer;
+import com.dillian.energymanagement.services.account.supply.SupplyOptimizer;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -31,7 +31,7 @@ public class Scheduler {
         schedulerService.scheduleAtFixedRate(() -> {
             try {
                 accountsToBeUpdated = supplyOptimizer.updateSupplyAmount(accounts);
-                accounts.forEach(supplyCategorizer::categorizeSupply);
+                accounts.forEach(supplyCategorizer::categorize);
                 log.info("process started");
             } catch (Exception e) {
                 log.info(e.toString());
