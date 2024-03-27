@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("api/v1/supervisors")
+@RequestMapping("api/v1/supervisor")
 @Slf4j
 public class SupervisorController {
 

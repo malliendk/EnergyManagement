@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("api/v1/distributors")
+@RequestMapping("api/v1/distributor")
 public class DistributorController {
 
     private final DistributorService distributorService;

@@ -29,7 +29,7 @@ public class SupervisorMapper implements DtoMapper<Supervisor, SupervisorDto> {
         dto.setLastName(supervisor.getLastName());
         dto.setProfilePicUri(supervisor.getProfilePicUri());
         dto.setDistributorName(supervisor.getDistributor().getName());
-        dto.setLocalitieNames(supervisor.getLocalities()
+        dto.setLocalityNames(supervisor.getLocalities()
                 .stream()
                 .map(Locality::getName)
                 .toList());

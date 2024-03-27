@@ -17,7 +17,7 @@ public class Locality {
     @GeneratedValue
     Long id;
     String name;
-
+    String imageUrl;
     @ManyToMany
     List<Supervisor> supervisors;
     @OneToMany

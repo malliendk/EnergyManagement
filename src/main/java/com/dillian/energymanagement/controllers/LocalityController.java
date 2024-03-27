@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("api/v1/localities")
+@RequestMapping("api/v1/locality")
 public class LocalityController {
 
     private final LocalityService localityService;

@@ -52,7 +52,7 @@ public class EntityMappingService {
 
     public Supervisor mapSupervisor(SupervisorDto dto) {
         Supervisor supervisor = supervisorMapper.toEntity(dto);
-        final List<Locality> localities = localityServiceImpl.findAllByName(dto.getLocalitieNames());
+        final List<Locality> localities = localityServiceImpl.findAllByName(dto.getLocalityNames());
         supervisor.setLocalities(localities);
         final Distributor distributor = distributorServiceImpl.findByName(dto.getDistributorName());
         supervisor.setDistributor(distributor);

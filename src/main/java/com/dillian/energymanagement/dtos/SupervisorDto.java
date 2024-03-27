@@ -14,5 +14,5 @@ public class SupervisorDto {
     String lastName;
     String profilePicUri;
     String distributorName;
-    List<String> localitieNames;
+    List<String> localityNames;
 }

@@ -11,6 +11,7 @@ public class LocalityDto {
 
     Long id;
     String name;
+    String imageUrl;
     List<String> supervisorNames;
     List<Long> accountIds;
 }
