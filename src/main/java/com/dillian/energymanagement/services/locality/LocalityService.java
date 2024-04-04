@@ -9,6 +9,7 @@ public interface LocalityService {
     LocalityDto create(Locality locality);
 
     List<LocalityDto> findAll();
+    List<LocalityDto> findAllBySupervisor(String lastName);
 
     LocalityDto findById(Long id);
 

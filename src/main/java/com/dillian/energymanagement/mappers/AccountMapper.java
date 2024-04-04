@@ -27,7 +27,7 @@ public class AccountMapper implements DtoMapper<Account, AccountDto> {
         dto.setSupplyType(account.getSupplyType());
         dto.setSupplyAmount(account.getSupplyAmount());
         dto.setDistributorName(account.getDistributor().getName());
-        dto.setLocation(account.getLocality().getName());
+        dto.setLocalityName(account.getLocality().getName());
         return dto;
     }
 }

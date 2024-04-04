@@ -3,7 +3,10 @@ package com.dillian.energymanagement.controllers;
 import com.dillian.energymanagement.dtos.LocalityDto;
 import com.dillian.energymanagement.services.locality.LocalityManagerFacade;
 import com.dillian.energymanagement.services.locality.LocalityService;
+import com.dillian.energymanagement.utils.ImageCreator;
 import lombok.AllArgsConstructor;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,6 +18,7 @@ public class LocalityController {
 
     private final LocalityService localityService;
     private final LocalityManagerFacade localityManagerFacade;
+    private final ImageCreator imageCreator;
 
     @PostMapping()
     public LocalityDto create(@RequestBody LocalityDto dto) {
@@ -26,10 +30,19 @@ public class LocalityController {
         return localityService.findById(id);
     }
 
-
     @GetMapping()
     public List<LocalityDto> findAll() {
         return localityService.findAll();
+    }
+
+    @GetMapping("supervisor/{lastName}")
+    public List<LocalityDto> findAllBySupervisor(@PathVariable String lastName) {
+        return localityService.findAllBySupervisor(lastName);
+    }
+
+    @GetMapping(value = "image/{imageName}", produces = MediaType.IMAGE_PNG_VALUE)
+    public ResponseEntity<byte[]> getImage(@PathVariable String imageName) {
+        return imageCreator.getImage(imageName);
     }
 
     @PutMapping("{id}")

@@ -23,8 +23,9 @@ public class Locality {
     @OneToMany
     List<Account> accounts;
 
-    public Locality(final String name, final List<Supervisor> supervisors, final List<Account> accounts) {
+    public Locality(final String name, final String imageUrl, final List<Supervisor> supervisors, final List<Account> accounts) {
         this.name = name;
+        this.imageUrl = imageUrl;
         this.supervisors = supervisors;
         this.accounts = accounts;
     }

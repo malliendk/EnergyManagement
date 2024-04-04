@@ -43,8 +43,8 @@ public class RelationshipSetter {
     private Distributor stedin;
     private Supervisor ameliaLupina;
     private Supervisor tessaSavours;
-    private Supervisor quillickWindsworth;
-    private Supervisor henrickRighthood;
+    private Supervisor marcusCaldwell;
+    private Supervisor KaitoTanaka;
     private Locality apeldoorn;
     private Locality zutphen;
     private Locality putten;
@@ -62,11 +62,11 @@ public class RelationshipSetter {
         this.stedin = distributors.get(1);
         this.ameliaLupina = supervisorService.findByLastName("Lupina");
         this.tessaSavours = supervisorService.findByLastName("Savours");
-        this.quillickWindsworth = supervisorService.findByLastName("Windsworth");
-        this.henrickRighthood = supervisorService.findByLastName("Righthood");
-        this.apeldoorn = localityService.findByName("Apeldoorn");
+        this.marcusCaldwell = supervisorService.findByLastName("Caldwell");
+        this.KaitoTanaka = supervisorService.findByLastName("Tanaka");
+        this.apeldoorn = localityService.findByName("Amersfoort");
         this.zutphen = localityService.findByName("Zutphen");
-        this.putten = localityService.findByName("Putten");
+        this.putten = localityService.findByName("Leiden");
 
         this.accounts = setForAccounts(Constants.numberOfAccounts);
         this.localities = setForLocalities();
@@ -93,7 +93,7 @@ public class RelationshipSetter {
                         .filter(account -> account.getDistributor().getName().equals(distributor.getName()))
                         .toList()));
         liander.setSupervisors(List.of(ameliaLupina, tessaSavours));
-        stedin.setSupervisors(List.of(quillickWindsworth, henrickRighthood));
+        stedin.setSupervisors(List.of(marcusCaldwell, KaitoTanaka));
         return distributors;
     }
 
@@ -101,7 +101,9 @@ public class RelationshipSetter {
         ameliaLupina.setDistributor(this.liander);
         ameliaLupina.setLocalities(List.of(apeldoorn, zutphen, putten));
         tessaSavours.setDistributor(this.liander);
-        return supervisors;
+        KaitoTanaka.setDistributor(this.stedin);
+        marcusCaldwell.setDistributor(this.stedin);
+        return List.of(ameliaLupina, tessaSavours, KaitoTanaka, marcusCaldwell);
     }
 
     public List<Locality> setForLocalities() {

@@ -11,6 +11,6 @@ public class AccountDto {
     String name;
     String supplyType;
     double supplyAmount;
-    String location;
+    String localityName;
     String distributorName;
 }

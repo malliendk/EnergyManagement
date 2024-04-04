@@ -4,10 +4,12 @@ import com.dillian.energymanagement.dtos.SupervisorDto;
 import com.dillian.energymanagement.entities.Locality;
 import com.dillian.energymanagement.entities.Supervisor;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 @Component
 @AllArgsConstructor
+@Slf4j
 public class SupervisorMapper implements DtoMapper<Supervisor, SupervisorDto> {
 
 
@@ -17,7 +19,6 @@ public class SupervisorMapper implements DtoMapper<Supervisor, SupervisorDto> {
         supervisor.setId(dto.getId());
         supervisor.setFirstName(dto.getFirstName());
         supervisor.setLastName(dto.getLastName());
-        supervisor.setProfilePicUri(dto.getProfilePicUri());
         return supervisor;
     }
 
@@ -27,7 +28,6 @@ public class SupervisorMapper implements DtoMapper<Supervisor, SupervisorDto> {
         dto.setId(supervisor.getId());
         dto.setFirstName(supervisor.getFirstName());
         dto.setLastName(supervisor.getLastName());
-        dto.setProfilePicUri(supervisor.getProfilePicUri());
         dto.setDistributorName(supervisor.getDistributor().getName());
         dto.setLocalityNames(supervisor.getLocalities()
                 .stream()

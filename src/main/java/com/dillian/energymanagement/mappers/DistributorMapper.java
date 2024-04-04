@@ -14,15 +14,11 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 public class DistributorMapper implements DtoMapper<Distributor, DistributorDto> {
 
-    private final DtoMapper<Account, AccountDto> accountMapper;
-    private final DtoMapper<Supervisor, SupervisorDto> supervisorMapper;
-
     @Override
     public Distributor toEntity(final DistributorDto dto) {
         Distributor distributor = new Distributor();
         distributor.setId(dto.getId());
         distributor.setName(dto.getName());
-        distributor.setLogoUri(dto.getLogoUri());
         return distributor;
     }
 
@@ -31,7 +27,6 @@ public class DistributorMapper implements DtoMapper<Distributor, DistributorDto>
         final DistributorDto dto = new DistributorDto();
         dto.setId(distributor.getId());
         dto.setName(distributor.getName());
-        dto.setLogoUri(distributor.getLogoUri());
         dto.setSupervisorNames(distributor.getSupervisors()
                 .stream()
                 .map(Supervisor::getLastName)

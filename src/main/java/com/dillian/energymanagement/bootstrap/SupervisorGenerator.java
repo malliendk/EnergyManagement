@@ -16,13 +16,14 @@ public class SupervisorGenerator {
     public List<Supervisor> createWithBasicProperties() {
 
         Supervisor supervisor1 = new Supervisor("Amelia", "Lupina",
-                "D:\\Java projects\\Energy Management\\photos\\Amelia Lupina.png", null, null );
+                "photos/AmeliaLupina.png", null, null );
         Supervisor supervisor2 = new Supervisor("Tessa", "Savours",
-                "D:\\Java projects\\Energy Management\\photos\\Tessa Savours.png", null, null);
-        Supervisor supervisor3 = new Supervisor("Quillick", "Windsworth",
-                "D:\\Java projects\\Energy Management\\photos\\Quillick Windsworth.png", null, null);
-        Supervisor supervisor4 = new Supervisor("Henrick", "Righthood",
-                "D:\\Java projects\\Energy Management\\photos\\Henrick Righthood.png", null, null);
+                "photos/TessaSavours.png", null, null);
+        Supervisor supervisor3 = new Supervisor("Kaito", "Tanaka",
+                "photos/KaitoTanaka.png", null, null);
+        Supervisor supervisor4 = new Supervisor("Mateo", "Caldwell",
+                "photos/MateoCaldwell.png", null, null);
+
         final List<Supervisor> supervisors = List.of(supervisor1, supervisor2, supervisor3, supervisor4);
         return repository.saveAll(supervisors);
     }

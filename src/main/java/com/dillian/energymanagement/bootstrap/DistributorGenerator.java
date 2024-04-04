@@ -15,16 +15,14 @@ public class DistributorGenerator {
 
     public List<Distributor> createWithBasicProperties() {
         final Distributor liander = new Distributor("Liander",
-                "C:\\Java Projects\\EnergyManagement_api\\photos\\Liander.jpg", null, null);
-        final Distributor stedin = new Distributor("Steding",
-                "C:\\Java Projects\\EnergyManagement_api\\photos\\Stedin.jpg", null, null);
-        final Distributor enexis = new Distributor("Qterra",
-                "C:\\Java Projects\\EnergyManagement_api\\photos\\Qterra.png", null, null);
-        final Distributor coteq = new Distributor("Dep",
-                "C:\\Java Projects\\EnergyManagement_api\\photos\\Dep.jpeg", null, null);
-        final Distributor entrnce = new Distributor("Entrnce",
-                "C\\Java projects\\EnergyManagement_api\\photos\\Entrnce", null, null);
-        final List<Distributor> distributors = List.of(liander, stedin, enexis, coteq, entrnce);
+                "photos/Liander.png", null, null);
+        final Distributor stedin = new Distributor("Stedin",
+                "photos/Stedin.png", null, null);
+        final Distributor enexis = new Distributor("Coteq",
+                "photos/Coteq.png", null, null);
+        final Distributor coteq = new Distributor("Enexis",
+                "photos/Enexis.png", null, null);
+        final List<Distributor> distributors = List.of(liander, stedin, enexis, coteq);
         return repository.saveAll(distributors);
     }
 }

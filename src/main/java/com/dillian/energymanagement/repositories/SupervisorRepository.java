@@ -12,4 +12,6 @@ public interface SupervisorRepository extends JpaRepository<Supervisor, Long> {
 
     Optional<Supervisor> findByLastName(String name);
     List<Supervisor> findAllByLastNameIn(List<String> names);
+
+    List<Supervisor> findAllByDistributorName(String name);
 }

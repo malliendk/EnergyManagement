@@ -37,6 +37,13 @@ public class SupervisorServiceImpl implements SupervisorService {
         return supervisorRepository.findAllByLastNameIn(lastNames);
     }
 
+    public List<SupervisorDto> findAllByDistributor(String distributorName) {
+        return supervisorRepository.findAllByDistributorName(distributorName)
+                .stream()
+                .map(supervisorMapper::toDto)
+                .toList();
+    }
+
     public Supervisor findByLastName(String name) {
         return supervisorRepository.findByLastName(name).orElseThrow();
     }

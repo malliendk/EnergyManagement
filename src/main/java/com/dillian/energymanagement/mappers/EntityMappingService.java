@@ -34,7 +34,7 @@ public class EntityMappingService {
 
     public Account mapAccount(AccountDto dto) {
         Account account = accountMapper.toEntity(dto);
-        final Locality locality = localityServiceImpl.findByName(dto.getLocation());
+        final Locality locality = localityServiceImpl.findByName(dto.getLocalityName());
         account.setLocality(locality);
         final Distributor distributor = distributorServiceImpl.findByName(dto.getDistributorName());
         account.setDistributor(distributor);

@@ -38,6 +38,13 @@ public class LocalityServiceImpl implements LocalityService {
         return localityRepository.findAllByNameIn(names);
     }
 
+    public List<LocalityDto> findAllBySupervisor(String lastName) {
+        return localityRepository.findAllBySupervisorLastName(lastName)
+                .stream()
+                .map(localityMapper::toDto)
+                .toList();
+    }
+
     @Override
     public LocalityDto findById(Long id) {
         final Locality locality = localityRepository.findById(id).orElseThrow();

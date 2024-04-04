@@ -10,9 +10,15 @@ public interface SupervisorService {
 
     List<SupervisorDto> findAll();
 
+    List<SupervisorDto> findAllByDistributor(String distributorName);
+
     SupervisorDto findById(Long id);
+
+    Supervisor findByLastName(String name);
 
     SupervisorDto update(Long id, Supervisor supervisor);
 
     void delete(Long id);
+
+
 }
