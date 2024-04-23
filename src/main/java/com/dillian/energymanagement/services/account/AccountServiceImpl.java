@@ -48,33 +48,17 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
+    public List<AccountDto> findAllByLocality(String name) {
+        return accountRepository.findAllByLocalityName(name)
+                .stream()
+                .map(mapper::toDto)
+                .toList();
+    }
+
+    @Override
     public AccountDto findById(Long id) {
         Account account = accountRepository.findById(id).orElseThrow();
         return mapper.toDto(account);
-    }
-
-    @Override
-    public List<AccountDto> getShortageAccounts() {
-        return findAll()
-                .stream()
-                .filter(accountDto -> accountDto.getSupplyType().equals("shortage"))
-                .toList();
-    }
-
-    @Override
-    public List<AccountDto> getOptimalAccounts() {
-        return findAll()
-                .stream()
-                .filter(accountDto -> accountDto.getSupplyType().equals("optimal"))
-                .toList();
-    }
-
-    @Override
-    public List<AccountDto> getSurplusAccounts() {
-        return findAll()
-                .stream()
-                .filter(accountDto -> accountDto.getSupplyType().equals("surplus"))
-                .toList();
     }
 
     @Override
@@ -93,7 +77,7 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public void startOptimizeSupply() {
-        scheduler.startOptimzingSupply(findAllInternal());
+        scheduler.startOptimizingSupply(findAllInternal());
     }
 
     @Override

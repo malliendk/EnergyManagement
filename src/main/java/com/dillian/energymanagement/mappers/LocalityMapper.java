@@ -9,10 +9,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
-@AllArgsConstructor
 public class LocalityMapper implements DtoMapper<Locality, LocalityDto> {
 
-    private final DtoMapper<Account, AccountDto> accountMapper;
 
     @Override
     public Locality toEntity(final LocalityDto dto) {

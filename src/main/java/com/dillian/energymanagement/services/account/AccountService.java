@@ -10,13 +10,9 @@ public interface AccountService {
 
     List<AccountDto> findAll();
 
+    List<AccountDto> findAllByLocality(String name);
+
     AccountDto findById(Long id);
-
-    List<AccountDto> getShortageAccounts();
-
-    List<AccountDto> getOptimalAccounts();
-
-    List<AccountDto> getSurplusAccounts();
 
     AccountDto update(Long id, Account account);
 

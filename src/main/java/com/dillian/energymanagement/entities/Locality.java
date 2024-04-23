@@ -22,6 +22,8 @@ public class Locality {
     List<Supervisor> supervisors;
     @OneToMany
     List<Account> accounts;
+    @OneToMany
+    List<Event> events;
 
     public Locality(final String name, final String imageUrl, final List<Supervisor> supervisors, final List<Account> accounts) {
         this.name = name;

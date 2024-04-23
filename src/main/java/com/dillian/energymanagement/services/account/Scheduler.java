@@ -23,7 +23,7 @@ public class Scheduler {
     private List<Account> accountsToBeUpdated;
 
 
-    public void startOptimzingSupply(List<Account> accounts) {
+    public void startOptimizingSupply(List<Account> accounts) {
         long initialDelay = 0;
         long period = 1;
 

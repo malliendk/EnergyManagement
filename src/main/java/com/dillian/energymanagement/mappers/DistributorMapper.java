@@ -11,7 +11,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
-@AllArgsConstructor
 public class DistributorMapper implements DtoMapper<Distributor, DistributorDto> {
 
     @Override

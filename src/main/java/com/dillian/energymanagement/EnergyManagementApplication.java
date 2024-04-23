@@ -1,5 +1,6 @@
 package com.dillian.energymanagement;
 
+import com.dillian.energymanagement.bootstrap.EventRelationshipSetter;
 import com.dillian.energymanagement.bootstrap.RelationshipSetter;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class EnergyManagementApplication implements CommandLineRunner {
 
     private final RelationshipSetter relationshipSetter;
+    private final EventRelationshipSetter eventRelationshipSetter;
 
     public static void main(String[] args) {
         SpringApplication.run(EnergyManagementApplication.class, args);
@@ -24,6 +26,7 @@ public class EnergyManagementApplication implements CommandLineRunner {
     @Override
     public void run(String... args) {
         relationshipSetter.initializeObjectsAndSetRelationships();
+        eventRelationshipSetter.initializeAndSetObjects();
     }
 
     @Bean
