@@ -16,4 +16,8 @@ public interface LocalityService {
     LocalityDto update(Long id, Locality locality);
 
     void delete(Long id);
+
+    List<LocalityDto> findAllByName(String localityName);
+
+    Locality findByName(String localityName);
 }

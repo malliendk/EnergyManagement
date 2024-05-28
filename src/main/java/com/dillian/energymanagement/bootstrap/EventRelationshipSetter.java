@@ -5,7 +5,6 @@ import com.dillian.energymanagement.entities.LoadSource;
 import com.dillian.energymanagement.services.EventServiceImpl;
 import com.dillian.energymanagement.services.LoadSourceServiceImpl;
 import com.dillian.energymanagement.utils.Constants;
-import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -88,6 +87,6 @@ public class EventRelationshipSetter {
     }
 
     private void setDescriptionWithLoad(Event event, LoadSource source) {
-        event.setDescription(String.format(event.getDescription(), source.getLoad()));
+        event.setDescription(String.format(event.getDescription(), source.getGridLoad()));
     }
 }

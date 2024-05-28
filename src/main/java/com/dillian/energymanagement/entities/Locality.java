@@ -17,6 +17,7 @@ public class Locality {
     @GeneratedValue
     Long id;
     String name;
+    int startingSourcesAmount;
     String imageUrl;
     @ManyToMany
     List<Supervisor> supervisors;

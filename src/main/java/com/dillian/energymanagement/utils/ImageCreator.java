@@ -1,7 +1,5 @@
 package com.dillian.energymanagement.utils;
 
-import lombok.AllArgsConstructor;
-import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +11,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 @Component
-@AllArgsConstructor
 public class ImageCreator {
 
     public ResponseEntity<byte[]> getImage(@PathVariable String imageName) {

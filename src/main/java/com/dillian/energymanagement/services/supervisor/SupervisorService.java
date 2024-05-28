@@ -8,6 +8,8 @@ import java.util.List;
 public interface SupervisorService {
     SupervisorDto create(Supervisor supervisor);
 
+    SupervisorDto findByLocalityName(String localityName);
+
     List<SupervisorDto> findAll();
 
     List<SupervisorDto> findAllByDistributor(String distributorName);

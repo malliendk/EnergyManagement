@@ -28,6 +28,7 @@ public class SupervisorMapper implements DtoMapper<Supervisor, SupervisorDto> {
         dto.setId(supervisor.getId());
         dto.setFirstName(supervisor.getFirstName());
         dto.setLastName(supervisor.getLastName());
+        dto.setDistributionEfficiency(supervisor.getDistributionEfficiency());
         dto.setDistributorName(supervisor.getDistributor().getName());
         dto.setLocalityNames(supervisor.getLocalities()
                 .stream()

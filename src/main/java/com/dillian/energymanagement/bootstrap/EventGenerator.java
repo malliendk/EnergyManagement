@@ -14,13 +14,13 @@ public class EventGenerator {
     private final EventServiceImpl service;
 
     public List<Event> createWithBasicProperties() {
-        Event addParkeergarage = new Event("Bouw nieuwe parkeergarage", "De Gemeente heeft een " +
-                "vergunning afgegeven voor de bouw van een nieuwe parkeergarage, bestemd voor 400 elektrische voertuigen. " +
-                "De extra netbelasting is %f", null);
-        Event addZonneveld = new Event("Aanleg nieuw zonneveld", "De Gemeente heeft in samenwerking met " +
-                "lokale ondernemers een zonneveld aangelegd in een weiland. De extra netbelasting is %f", null);
-        Event addIndustrieterrein = new Event("Bouw nieuw industrieterrein", "de Gemeente heeft " +
-                "vergunningen afgegeven om aan de rand van stad een nieuw gebied voor kleine indusrtie aan te leggen."
+        Event addParkeergarage = new Event("Bouw nieuwe parkeergarage", "Een bewonerscollectief" +
+                "heeft een vergunning aangevraagd voor de bouw van een nieuwe parkeergarage, bestemd voor 400 elektrische " +
+                "voertuigen. De extra netbelasting is %f", null);
+        Event addZonneveld = new Event("Aanleg nieuw zonneveld", "Een bewonerscollectief heeft in samenwerking" +
+                "met lokale ondernemers een vergunning aangevraagd om een zonneweide aan leggen. De extra netbelasting is %f", null);
+        Event addIndustrieterrein = new Event("Bouw nieuw industrieterrein", "Een ondernemerscollectief heeft " +
+                "een vergunningen aangevraagd om aan de rand van stad een nieuw gebied voor kleine indusrtie aan te leggen."
                 , null);
         Event addWindpark = new Event("Aanleg nieuw windpark", "Een gebied in de gemeente is bestemd" +
                 "voor het oprichten van een park windturbines. De Gemeente heeft inmiddels budget weten vrij te maken" +

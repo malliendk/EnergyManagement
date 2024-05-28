@@ -34,6 +34,20 @@ public class LocalityServiceImpl implements LocalityService {
                 .toList();
     }
 
+    @Override
+    public Locality findByName(String localityName) {
+        return localityRepository.findByName(localityName).orElseThrow();
+    }
+
+    @Override
+    public List<LocalityDto> findAllByName(String localityName) {
+        return localityRepository.findAll()
+                .stream()
+                .filter(locality -> localityRepository.findByName(localityName).isPresent())
+                .map(localityMapper::toDto)
+                .toList();
+    }
+
     public List<Locality> findAllByName(List<String> names) {
         return localityRepository.findAllByNameIn(names);
     }
@@ -51,9 +65,7 @@ public class LocalityServiceImpl implements LocalityService {
         return localityMapper.toDto(locality);
     }
 
-    public Locality findByName(String name) {
-        return localityRepository.findByName(name).orElseThrow();
-    }
+
 
     @Override
     public LocalityDto update(Long id, Locality locality) {

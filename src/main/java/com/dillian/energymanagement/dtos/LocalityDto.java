@@ -11,6 +11,7 @@ public class LocalityDto {
 
     Long id;
     String name;
+    int startingSourcesAmount;
     List<String> supervisorNames;
     List<Long> accountIds;
 }

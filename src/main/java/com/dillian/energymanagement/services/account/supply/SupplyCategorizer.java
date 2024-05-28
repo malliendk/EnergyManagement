@@ -1,5 +1,6 @@
 package com.dillian.energymanagement.services.account.supply;
 
+import com.dillian.energymanagement.SupplyType;
 import com.dillian.energymanagement.entities.Account;
 import com.dillian.energymanagement.repositories.AccountRepository;
 import lombok.AllArgsConstructor;
@@ -13,11 +14,11 @@ public class SupplyCategorizer {
     public void categorize(Account account){
         double supplyAmount = account.getSupplyAmount();
         if (supplyAmount >= 0.0 && supplyAmount < 0.9) {
-            account.setSupplyType("shortage");
+            account.setSupplyType(SupplyType.SHORTAGE.toString());
         } else if (supplyAmount > 0.9 && supplyAmount <= 1.1) {
-            account.setSupplyType("optimal");
+            account.setSupplyType(SupplyType.OPTIMAL.toString());
         } else if (supplyAmount > 1.1) {
-            account.setSupplyType("surplus");
+            account.setSupplyType(SupplyType.SURPLUS.toString());
         } else {
             throw new IllegalArgumentException("Supply amount cannot be negative");
         }

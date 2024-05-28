@@ -4,6 +4,7 @@ import com.dillian.energymanagement.entities.Account;
 import com.dillian.energymanagement.repositories.AccountRepository;
 import com.dillian.energymanagement.services.account.supply.SupplyCategorizer;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -11,10 +12,11 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
+@Slf4j
 public class AccountGenerator {
 
     private final SupplyCategorizer supplyCategorizer;
-    private final AccountRepository repository;
+    private final AccountRepository accountRepository;
 
     public List<Account> createWithBasicProperties(int numberOfAccounts) {
         List<Account> accounts = new ArrayList<>();
@@ -22,7 +24,7 @@ public class AccountGenerator {
             Account account = new Account();
             account.setSupplyAmount(getRandomSupplyAmount());
             supplyCategorizer.categorize(account);
-            repository.save(account);
+            accountRepository.save(account);
             accounts.add(account);
         }
         return accounts;

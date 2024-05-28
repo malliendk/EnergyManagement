@@ -51,6 +51,11 @@ public class SupervisorController {
         return supervisorMapper.toDto(supervisor);
     }
 
+    @GetMapping("locality/{localityName}")
+    public SupervisorDto findByLocality(@PathVariable String localityName) {
+        return supervisorService.findByLocalityName(localityName);
+    }
+
     @GetMapping(value = "image/{imageName}", produces = MediaType.IMAGE_PNG_VALUE)
     public ResponseEntity<byte[]> getImage(@PathVariable String imageName) {
         return imageCreator.getImage(imageName);

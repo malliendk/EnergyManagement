@@ -13,7 +13,8 @@ public class LoadSourceMapper implements DtoMapper<LoadSource, LoadSourceDto>{
         dto.setId(loadSource.getId());
         dto.setName(loadSource.getName());
         dto.setDescription(loadSource.getDescription());
-        dto.setLoad(loadSource.getLoad());
+        dto.setGridLoad(loadSource.getGridLoad());
+        dto.setPrice(loadSource.getPrice());
         return dto;
     }
 
@@ -22,7 +23,8 @@ public class LoadSourceMapper implements DtoMapper<LoadSource, LoadSourceDto>{
         LoadSource loadSource = new LoadSource();
         loadSource.setName(dto.getName());
         loadSource.setDescription(dto.getDescription());
-        loadSource.setLoad(dto.getLoad());
+        loadSource.setGridLoad(dto.getGridLoad());
+        loadSource.setPrice(dto.getPrice());
         return loadSource;
     }
 }

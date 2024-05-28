@@ -4,6 +4,7 @@ import com.dillian.energymanagement.dtos.AccountDto;
 import com.dillian.energymanagement.services.account.AccountManagerFacade;
 import com.dillian.energymanagement.services.account.AccountService;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @RequestMapping("api/v1/account")
+@Slf4j
 public class AccountController {
 
     private final AccountService accountService;
@@ -32,9 +34,9 @@ public class AccountController {
         return accountService.findAll();
     }
 
-    @GetMapping("/locality/{name}")
-    public List<AccountDto> findAllByLocality(@PathVariable String name) {
-        return accountService.findAllByLocality(name);
+    @GetMapping("/locality/{localityName}")
+    public List<AccountDto> findAllByLocality(@PathVariable String localityName) {
+        return accountService.findAllByLocality(localityName);
     }
 
 //    @GetMapping("reset")

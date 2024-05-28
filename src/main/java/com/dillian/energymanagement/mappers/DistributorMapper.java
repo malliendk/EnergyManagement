@@ -1,13 +1,10 @@
 package com.dillian.energymanagement.mappers;
 
 
-import com.dillian.energymanagement.dtos.AccountDto;
 import com.dillian.energymanagement.dtos.DistributorDto;
-import com.dillian.energymanagement.dtos.SupervisorDto;
 import com.dillian.energymanagement.entities.Account;
 import com.dillian.energymanagement.entities.Distributor;
 import com.dillian.energymanagement.entities.Supervisor;
-import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component

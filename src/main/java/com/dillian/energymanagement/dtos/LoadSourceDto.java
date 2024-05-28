@@ -10,6 +10,7 @@ public class LoadSourceDto {
     private Long id;
     private String name;
     private String description;
-    private double load;
+    private double gridLoad;
+    private int price;
 }
 

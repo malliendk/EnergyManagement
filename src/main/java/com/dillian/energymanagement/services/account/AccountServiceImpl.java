@@ -8,12 +8,14 @@ import com.dillian.energymanagement.mappers.DtoMapper;
 import com.dillian.energymanagement.repositories.AccountRepository;
 import com.dillian.energymanagement.utils.Constants;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 @AllArgsConstructor
+@Slf4j
 public class AccountServiceImpl implements AccountService {
 
     private final AccountRepository accountRepository;
@@ -48,8 +50,8 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public List<AccountDto> findAllByLocality(String name) {
-        return accountRepository.findAllByLocalityName(name)
+    public List<AccountDto> findAllByLocality(String localityName) {
+        return accountRepository.findAllByLocalityName(localityName)
                 .stream()
                 .map(mapper::toDto)
                 .toList();

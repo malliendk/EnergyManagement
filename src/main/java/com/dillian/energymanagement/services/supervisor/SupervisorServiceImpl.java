@@ -25,6 +25,23 @@ public class SupervisorServiceImpl implements SupervisorService {
         return supervisorMapper.toDto(supervisor);
     }
 
+
+    @Override
+    public SupervisorDto findById(Long id) {
+        final Supervisor supervisor = supervisorRepository.findById(id).orElseThrow();
+        return supervisorMapper.toDto(supervisor);
+    }
+
+    public Supervisor findByLastName(String name) {
+        return supervisorRepository.findByLastName(name).orElseThrow();
+    }
+
+    @Override
+    public SupervisorDto findByLocalityName(String localityName) {
+        Supervisor supervisor = supervisorRepository.findByLocalityName(localityName).orElseThrow();
+        return supervisorMapper.toDto(supervisor);
+    }
+
     @Override
     public List<SupervisorDto> findAll() {
         return supervisorRepository.findAll()
@@ -42,16 +59,6 @@ public class SupervisorServiceImpl implements SupervisorService {
                 .stream()
                 .map(supervisorMapper::toDto)
                 .toList();
-    }
-
-    public Supervisor findByLastName(String name) {
-        return supervisorRepository.findByLastName(name).orElseThrow();
-    }
-
-    @Override
-    public SupervisorDto findById(Long id) {
-        final Supervisor supervisor = supervisorRepository.findById(id).orElseThrow();
-        return supervisorMapper.toDto(supervisor);
     }
 
     @Override

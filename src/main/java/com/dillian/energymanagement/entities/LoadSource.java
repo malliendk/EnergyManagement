@@ -15,15 +15,17 @@ public class LoadSource {
 
     @Id
     @GeneratedValue
-    Long id;
-    String name;
+    private Long id;
+    private String name;
 
-    String description;
-    double load;
+    private String description;
+    double gridLoad;
+    int price;
 
-    public LoadSource(final String name, final String description, final double load) {
+    public LoadSource(String name, String description, double gridLoad, int price) {
         this.name = name;
         this.description = description;
-        this.load = load;
+        this.gridLoad = gridLoad;
+        this.price = price;
     }
 }

@@ -6,7 +6,6 @@ import com.dillian.energymanagement.entities.Locality;
 import com.dillian.energymanagement.entities.Supervisor;
 import com.dillian.energymanagement.services.locality.LocalityServiceImpl;
 import com.dillian.energymanagement.services.supervisor.SupervisorServiceImpl;
-import com.dillian.energymanagement.utils.Constants;
 import com.dillian.energymanagement.utils.Localities;
 import org.springframework.stereotype.Service;
 
@@ -68,7 +67,7 @@ public class RelationshipSetter {
         this.zutphen = localityService.findByName("Zutphen");
         this.putten = localityService.findByName("Leiden");
 
-        this.accounts = setForAccounts(Constants.numberOfAccounts);
+        this.accounts = setForAccounts();
         this.localities = setForLocalities();
         this.distributors = setForDistributors();
         this.supervisors = setForSupervisors();
@@ -77,7 +76,7 @@ public class RelationshipSetter {
     }
 
 
-    public List<Account> setForAccounts(int numberOfAccounts) {
+    public List<Account> setForAccounts() {
         for (Account account : this.accounts) {
             final Locality localityToSet = pickRandomLocality();
             account.setLocality(localityToSet);
