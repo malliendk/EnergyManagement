@@ -2,7 +2,6 @@ package com.dillian.energymanagement.services.locality;
 
 import com.dillian.energymanagement.dtos.LocalityDto;
 import com.dillian.energymanagement.entities.Locality;
-import com.dillian.energymanagement.mappers.EntityMappingService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

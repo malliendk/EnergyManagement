@@ -4,7 +4,7 @@ package com.dillian.energymanagement.services;
 import com.dillian.energymanagement.dtos.BuildingDto;
 import com.dillian.energymanagement.entities.Building;
 import com.dillian.energymanagement.mappers.DtoMapper;
-import com.dillian.energymanagement.repositories.LoadSourceRepository;
+import com.dillian.energymanagement.repositories.BuildlingRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,11 +16,11 @@ public class BuildingServiceImpl implements BuildingService {
 
     private final DtoMapper<Building, BuildingDto> mapper;
 
-    private final LoadSourceRepository loadSourceRepository;
+    private final BuildlingRepository buildlingRepository;
 
     @Override
     public List<BuildingDto> findAll() {
-        return loadSourceRepository.findAll()
+        return buildlingRepository.findAll()
                 .stream()
                 .map(mapper::toDto)
                 .toList();
@@ -28,24 +28,24 @@ public class BuildingServiceImpl implements BuildingService {
 
     @Override
     public BuildingDto findById(Long id){
-        return loadSourceRepository.findById(id)
+        return buildlingRepository.findById(id)
                 .map(mapper::toDto)
                 .orElseThrow();
     }
 
     public Building findByNameInternal(String name) {
-        return loadSourceRepository.findByName(name).orElseThrow();
+        return buildlingRepository.findByName(name).orElseThrow();
     }
 
     @Override
     public BuildingDto findByName(String name){
-        return loadSourceRepository.findByName(name)
+        return buildlingRepository.findByName(name)
                 .map(mapper::toDto)
                 .orElseThrow();
     }
 
     public List<Building> saveAllInternal(List<Building> sources) {
-        return loadSourceRepository.saveAll(sources);
+        return buildlingRepository.saveAll(sources);
     }
 
 }

@@ -17,8 +17,9 @@ public class Building {
     @GeneratedValue
     private Long id;
     private String name;
-
     private String description;
+
+
     double gridLoad;
     int price;
 

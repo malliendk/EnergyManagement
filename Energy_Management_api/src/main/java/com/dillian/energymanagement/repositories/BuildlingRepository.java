@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface LoadSourceRepository extends JpaRepository<Building, Long> {
+public interface BuildlingRepository extends JpaRepository<Building, Long> {
 
     Optional<Building> findByName(String name);
 }

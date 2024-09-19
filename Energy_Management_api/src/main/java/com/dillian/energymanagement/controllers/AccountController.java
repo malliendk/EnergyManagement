@@ -1,7 +1,6 @@
 package com.dillian.energymanagement.controllers;
 
 import com.dillian.energymanagement.dtos.AccountDto;
-import com.dillian.energymanagement.services.account.AccountManagerFacade;
 import com.dillian.energymanagement.services.account.AccountService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
