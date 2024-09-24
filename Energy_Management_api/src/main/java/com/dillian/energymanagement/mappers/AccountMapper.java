@@ -12,7 +12,10 @@ public class AccountMapper {
         dto.setId(account.getId());
         dto.setSupplyType(account.getSupplyType().toString());
         dto.setSupplyAmount(account.getSupplyAmount());
-        dto.setProduction(account.getProduction());
+        dto.setEnergyYield(account.getEnergyYield());
+        dto.setGoldYield(account.getEnergyYield());
+        dto.setResearchYield(account.getResearchYield());
+        dto.setPopYield(account.getPopYield());
         return dto;
     }
 }

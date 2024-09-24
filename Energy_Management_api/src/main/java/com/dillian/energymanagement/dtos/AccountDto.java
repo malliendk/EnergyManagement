@@ -10,5 +10,8 @@ public class AccountDto {
     private Long id;
     private String supplyType;
     private double supplyAmount;
-    private double production;
+    private double energyYield;
+    private double goldYield;
+    private double researchYield;
+    private double popYield;
 }

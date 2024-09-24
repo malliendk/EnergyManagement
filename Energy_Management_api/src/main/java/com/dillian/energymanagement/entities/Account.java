@@ -4,7 +4,6 @@ import com.dillian.energymanagement.SupplyType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 import lombok.*;
 
 @Entity
@@ -17,8 +16,11 @@ public class Account {
 
     @Id
     @GeneratedValue
-    Long id;
-    SupplyType supplyType;
-    double supplyAmount;
-    double production;
+    private Long id;
+    private SupplyType supplyType;
+    private double supplyAmount;
+    private double energyYield;
+    private double goldYield;
+    private double researchYield;
+    private double popYield;
 }
