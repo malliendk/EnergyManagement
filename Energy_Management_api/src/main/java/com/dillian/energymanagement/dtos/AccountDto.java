@@ -7,8 +7,8 @@ import lombok.Setter;
 @Setter
 public class AccountDto {
 
-    Long id;
-    String supplyType;
-    double supplyAmount;
-    String localityName;
+    private Long id;
+    private String supplyType;
+    private double supplyAmount;
+    private double production;
 }

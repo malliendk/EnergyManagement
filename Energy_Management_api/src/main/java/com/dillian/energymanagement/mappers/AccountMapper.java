@@ -5,24 +5,14 @@ import com.dillian.energymanagement.entities.Account;
 import org.springframework.stereotype.Component;
 
 @Component
-public class AccountMapper implements DtoMapper<Account, AccountDto> {
+public class AccountMapper {
 
-    @Override
-    public Account toEntity(final AccountDto dto) {
-        final Account account = new Account();
-        account.setId(dto.getId());
-        account.setSupplyType(dto.getSupplyType());
-        account.setSupplyAmount(dto.getSupplyAmount());
-        return account;
-    }
-
-    @Override
-    public AccountDto toDto(final Account account) {
-        final AccountDto dto = new AccountDto();
+    public AccountDto toDto(Account account) {
+        AccountDto dto = new AccountDto();
         dto.setId(account.getId());
-        dto.setSupplyType(account.getSupplyType());
+        dto.setSupplyType(account.getSupplyType().toString());
         dto.setSupplyAmount(account.getSupplyAmount());
-        dto.setLocalityName(account.getLocality().getName());
+        dto.setProduction(account.getProduction());
         return dto;
     }
 }

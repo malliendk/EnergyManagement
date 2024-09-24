@@ -9,10 +9,8 @@ import org.springframework.stereotype.Component;
 @Component
 @AllArgsConstructor
 @Slf4j
-public class SupervisorMapper implements DtoMapper<Supervisor, SupervisorDto> {
+public class SupervisorMapper {
 
-
-    @Override
     public Supervisor toEntity(SupervisorDto dto) {
         final Supervisor supervisor = new Supervisor();
         supervisor.setId(dto.getId());
@@ -21,7 +19,6 @@ public class SupervisorMapper implements DtoMapper<Supervisor, SupervisorDto> {
         return supervisor;
     }
 
-    @Override
     public SupervisorDto toDto(Supervisor supervisor) {
         final SupervisorDto dto = new SupervisorDto();
         dto.setId(supervisor.getId());

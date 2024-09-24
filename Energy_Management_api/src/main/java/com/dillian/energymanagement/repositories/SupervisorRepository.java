@@ -13,9 +13,4 @@ import java.util.Optional;
 public interface SupervisorRepository extends JpaRepository<Supervisor, Long> {
 
     Optional<Supervisor> findByLastName(String name);
-    List<Supervisor> findAllByLastNameIn(List<String> names);
-    List<Supervisor> findAllByDistributorName(String name);
-
-    @Query("SELECT s FROM Supervisor s JOIN s.localities l WHERE l.name = :localityName")
-    Optional<Supervisor> findByLocalityName(@Param("localityName") String localityName);
 }

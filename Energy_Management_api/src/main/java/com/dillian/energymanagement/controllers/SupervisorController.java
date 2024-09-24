@@ -1,10 +1,8 @@
 package com.dillian.energymanagement.controllers;
 
 import com.dillian.energymanagement.dtos.SupervisorDto;
-import com.dillian.energymanagement.entities.Supervisor;
-import com.dillian.energymanagement.mappers.SupervisorMapper;
-import com.dillian.energymanagement.services.supervisor.SupervisorService;
-import com.dillian.energymanagement.utils.ImageCreator;
+import com.dillian.energymanagement.services.SupervisorService;
+import com.dillian.energymanagement.utils.ImageCreationService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
@@ -20,53 +18,38 @@ import java.util.List;
 public class SupervisorController {
 
     private final SupervisorService supervisorService;
-    private final SupervisorManagerFacade supervisorManagerFacade;
-    private final SupervisorMapper supervisorMapper;
-    private final ImageCreator imageCreator;
+    private final ImageCreationService imageCreationService;
 
-    @PostMapping()
-    public SupervisorDto create(@RequestBody SupervisorDto dto) {
-        return supervisorManagerFacade.mapAndCreate(dto);
+    @PostMapping
+    public ResponseEntity<SupervisorDto> create(@RequestBody SupervisorDto supervisorDto) {
+        return ResponseEntity
+                .ok(supervisorService.create(supervisorDto));
     }
 
-    @GetMapping()
-    public List<SupervisorDto> findAll() {
-        return supervisorService.findAll();
-    }
-
-    @GetMapping("/distributor/{supervisorName}")
-    public List<SupervisorDto> findAllBySupervisor(@PathVariable String supervisorName) {
-        return supervisorService.findAllByDistributor(supervisorName);
+    @GetMapping("all")
+    public ResponseEntity<List<SupervisorDto>> findAll() {
+        return ResponseEntity
+                .ok(supervisorService.findAll());
     }
 
     @GetMapping("{id}")
-    public SupervisorDto findById(@PathVariable Long id) {
-        return supervisorService.findById(id);
+    public ResponseEntity<SupervisorDto> findById(@PathVariable Long id) {
+        return ResponseEntity
+                .ok(supervisorService.findById(id));
     }
 
-    @GetMapping("/name/{name}")
-    public SupervisorDto findByName(@PathVariable String name) {
-        Supervisor supervisor = supervisorService.findByLastName(name);
-        return supervisorMapper.toDto(supervisor);
+    @GetMapping("/name/{lastName}")
+    public ResponseEntity<SupervisorDto> findByLastName(@PathVariable String lastName) {
+        return ResponseEntity
+                .ok(supervisorService.findByLastName(lastName));
     }
 
-    @GetMapping("locality/{localityName}")
-    public SupervisorDto findByLocality(@PathVariable String localityName) {
-        return supervisorService.findByLocalityName(localityName);
-    }
 
     @GetMapping(value = "image/{imageName}", produces = MediaType.IMAGE_PNG_VALUE)
     public ResponseEntity<byte[]> getImage(@PathVariable String imageName) {
-        return imageCreator.getImage(imageName);
-    }
-
-    @PutMapping("{id}")
-    public SupervisorDto update(@PathVariable Long id, @RequestBody SupervisorDto dto) {
-        return supervisorManagerFacade.mapAndUpdate(id, dto);
-    }
-
-    @DeleteMapping("{id}")
-    public void delete(@PathVariable Long id) {
-        supervisorService.delete(id);
+        return ResponseEntity
+                .ok()
+                .contentType(MediaType.IMAGE_JPEG)
+                .body(imageCreationService.getImage(imageName));
     }
 }

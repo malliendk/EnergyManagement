@@ -13,7 +13,7 @@ public class SupervisorGenerator {
 
     private final SupervisorRepository repository;
 
-    public List<Supervisor> createWithBasicProperties() {
+    public void createInitialSupervisors() {
 
         Supervisor ameliaLupina = new Supervisor(
                 "Amelia",
@@ -43,7 +43,6 @@ public class SupervisorGenerator {
             0.2,
             1,
             0.5);
-
-        return repository.saveAll(List.of(ameliaLupina, tessaSavours, kaitoTanaka, mateoCaldwell));
+        repository.saveAll(List.of(ameliaLupina, tessaSavours, kaitoTanaka, mateoCaldwell));
     }
 }
