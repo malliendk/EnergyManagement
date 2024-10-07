@@ -1,13 +1,7 @@
 package com.dillian.energymanagement.services.account.supply;
 
-import com.dillian.energymanagement.entities.Account;
-import com.dillian.energymanagement.repositories.AccountRepository;
-import com.dillian.energymanagement.utils.Constants;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Random;
 
 @Service
 @AllArgsConstructor

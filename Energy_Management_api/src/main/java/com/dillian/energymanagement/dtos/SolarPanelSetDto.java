@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class AccountDto {
+public class SolarPanelSetDto {
 
     private Long id;
     private String supplyType;

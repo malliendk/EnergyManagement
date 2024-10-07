@@ -4,7 +4,6 @@ import com.dillian.energymanagement.SupplyType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 import lombok.*;
 
 @Entity
@@ -13,7 +12,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class Account {
+public class SolarPanelSet {
 
     @Id
     @GeneratedValue

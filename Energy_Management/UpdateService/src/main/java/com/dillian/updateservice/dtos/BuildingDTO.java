@@ -13,12 +13,13 @@ public class BuildingDTO {
     private int price;
     private String imageUri;
     private double gridCapacityIncrease;
-    private double gridLoad;
     private double energyProduction;
     private int houseHolds;
     private double energyConsumption;
     private int solarPanelCapacity;
     private double popularityYield;
     private int researchYield;
+    private int incomeYield;
+    private SolarPanelSetDTO solarPanelSet;
 }
 

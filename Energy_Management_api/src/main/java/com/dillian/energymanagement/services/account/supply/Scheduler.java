@@ -1,6 +1,6 @@
 package com.dillian.energymanagement.services.account.supply;
 
-import com.dillian.energymanagement.entities.Account;
+import com.dillian.energymanagement.entities.SolarPanelSet;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -17,10 +17,10 @@ public class Scheduler {
 
     private final SupplyOptimizer supplyOptimizer;
     private ScheduledExecutorService schedulerService;
-    private List<Account> accountsToBeUpdated;
+    private List<SolarPanelSet> accountsToBeUpdated;
 
 
-    public void startOptimizingSupply(List<Account> accounts) {
+    public void startOptimizingSupply(List<SolarPanelSet> solarPanelSets) {
         long initialDelay = 0;
         long period = 1;
 

@@ -3,7 +3,7 @@ package com.dillian.energymanagement;
 import com.dillian.energymanagement.bootstrap.SupervisorGenerator;
 import com.dillian.energymanagement.repositories.AccountRepository;
 import com.dillian.energymanagement.repositories.SupervisorRepository;
-import com.dillian.energymanagement.bootstrap.AccountGenerator;
+import com.dillian.energymanagement.bootstrap.SolarPanelSetGenerator;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
@@ -16,7 +16,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class EnergyManagementApplication implements CommandLineRunner {
 
     private final AccountRepository accountRepository;
-    private final AccountGenerator accountGenerator;
+    private final SolarPanelSetGenerator solarPanelSetGenerator;
     private final SupervisorGenerator supervisorGenerator;
     private final SupervisorRepository supervisorRepository;
 
@@ -28,7 +28,7 @@ public class EnergyManagementApplication implements CommandLineRunner {
     public void run(String... args) {
         if (accountRepository.findAll().isEmpty()) {
             log.info("account repository empty, generating initial accounts");
-            accountGenerator.fillDataBase();
+            solarPanelSetGenerator.fillDataBase();
         } else {
             log.info("Accounts found in database");
         }

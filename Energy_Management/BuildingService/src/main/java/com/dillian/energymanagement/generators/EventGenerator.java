@@ -1,5 +1,6 @@
 package com.dillian.energymanagement.generators;
 
+import com.dillian.energymanagement.entities.Event;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,6 @@
 package com.dillian.energymanagement.bootstrap;
 
-import com.dillian.energymanagement.entities.Account;
+import com.dillian.energymanagement.entities.SolarPanelSet;
 import com.dillian.energymanagement.repositories.AccountRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -16,10 +16,10 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class AccountGeneratorTest {
+public class SolarPanelSetGeneratorTest {
 
     @InjectMocks
-    private AccountGenerator testable;
+    private SolarPanelSetGenerator testable;
 
     @Mock
     private AccountRepository accountRepository;
@@ -27,14 +27,14 @@ public class AccountGeneratorTest {
 
     @Test
     void fillDataBase() {
-        List<Account> initialAccounts = new ArrayList<Account>();
+        List<SolarPanelSet> initialSolarPanelSets = new ArrayList<SolarPanelSet>();
 
-        when(accountRepository.saveAll(any(List.class))).thenReturn(initialAccounts);
-        when(accountRepository.saveAll(any(List.class))).thenReturn(initialAccounts);
+        when(accountRepository.saveAll(any(List.class))).thenReturn(initialSolarPanelSets);
+        when(accountRepository.saveAll(any(List.class))).thenReturn(initialSolarPanelSets);
 
         testable.fillDataBase();
 
-        assertThat(initialAccounts.size()).isEqualTo(100);
+        assertThat(initialSolarPanelSets.size()).isEqualTo(100);
 
     }
 }
