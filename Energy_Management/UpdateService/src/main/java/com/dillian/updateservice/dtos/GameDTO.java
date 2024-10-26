@@ -14,6 +14,6 @@ public class GameDTO {
     private double funds;
     private double energyYield;
     private double solarPanelSetCapacity;
-    private List<SolarPanelSetDTO> solarPanelSets;
+    private int solarPanelSets;
     private List<BuildingDTO> buildings;
 }

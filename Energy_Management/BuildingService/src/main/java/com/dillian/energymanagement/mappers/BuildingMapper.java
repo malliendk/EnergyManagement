@@ -4,6 +4,8 @@ import com.dillian.energymanagement.dtos.building.BuildingDTO;
 import com.dillian.energymanagement.entities.building.*;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class BuildingMapper {
 
@@ -24,7 +26,7 @@ public class BuildingMapper {
         BuildingDTO buildingDTO = createWithGenericProperties(housing);
         buildingDTO.setEnergyConsumption(housing.getEnergyConsumption());
         buildingDTO.setHouseHolds(housing.getHouseHolds());
-        buildingDTO.setSolarPanelCapacity(housing.getSolarPanelCapacity());
+        buildingDTO.setSolarPanelSetIds(List.of(housing.getSolarPanelSets().getId()));
         return buildingDTO;
     }
 
@@ -32,7 +34,7 @@ public class BuildingMapper {
         BuildingDTO buildingDTO = createWithGenericProperties(publicBuilding);
         buildingDTO.setGridLoad(publicBuilding.getGridLoad());
         buildingDTO.setEnergyConsumption(publicBuilding.getEnergyConsumption());
-        buildingDTO.setSolarPanelCapacity(publicBuilding.getSolarPanelCapacity());
+        buildingDTO.setSolarPanelSetIds(publicBuilding.getSolarPanelSetIds());
         buildingDTO.setResearchYield(buildingDTO.getResearchYield());
         buildingDTO.setPopularityYield(buildingDTO.getPopularityYield());
         return buildingDTO;

@@ -1,10 +1,7 @@
 package com.dillian.energymanagement.entities;
 
 import com.dillian.energymanagement.entities.building.Building;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,11 +18,6 @@ public class Event {
     String name;
     String description;
     @OneToOne
+    @JoinColumn(name = "building_id")
     Building building;
-
-    public Event(final String name, final String description, final Building building) {
-        this.name = name;
-        this.description = description;
-        this.building = building;
-    }
 }

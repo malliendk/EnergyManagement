@@ -1,7 +1,9 @@
-package com.dillian.updateservice.dtos;
+package com.dillian.e_mngt_backendforfrontend.dtos;
 
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -12,13 +14,15 @@ public class BuildingDTO {
     private String description;
     private int price;
     private String imageUri;
-    private double gridCapacityIncrease;
+    private int gridCapacity;
+    private double gridLoad;
     private double energyProduction;
     private int houseHolds;
     private double energyConsumption;
-    private double popularityYield;
-    private int researchYield;
-    private int incomeYield;
-    private SolarPanelSetDTO solarPanelSet;
-}
+    private double goldIncome;
+    private int popularityIncome;
+    private int researchIncome;
+    private int environmentalIncome;
+    private List<SolarPanelSetDTO> solarPanelSets;
 
+}

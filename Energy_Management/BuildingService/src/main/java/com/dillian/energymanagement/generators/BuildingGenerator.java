@@ -1,5 +1,7 @@
 package com.dillian.energymanagement.generators;
 
+import com.dillian.energymanagement.entities.building.Building;
+import com.dillian.energymanagement.entities.building.PublicBuilding;
 import com.dillian.energymanagement.services.BuildingServiceImpl;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -11,6 +13,20 @@ import org.springframework.stereotype.Service;
 public class BuildingGenerator {
 
     private final BuildingServiceImpl service;
+
+    public void create() {
+        PublicBuilding townHall = new PublicBuilding(
+                1L,
+                "Gemeentehuis",
+                "Bij het gemeentehuis kun je gebouwen kopen en je fabrieken op en afschalen",
+                0,
+                "",
+
+
+                );
+        townHall.set
+
+    }
 
 //    public List<Building> createWithBasicProperties() {
 //        Building kolenCentrale = new Building("kolencentrale", "energievoorziening" +

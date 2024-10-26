@@ -24,14 +24,7 @@ public class BuildingController {
         return ResponseEntity.ok(loadSources);
     }
 
-
-    @GetMapping("all")
-    public ResponseEntity<List<BuildingDTO>> findAllById(@RequestBody BuildingsRequestDto requestDto) {
-        return ResponseEntity
-                .ok(buildingService.findAllById(requestDto.getIds()));
-    }
-
-    @GetMapping()
+    @GetMapping("ids")
     public ResponseEntity<List<BuildingDTO>> findAllById(@RequestParam List<Long> ids) {
         return ResponseEntity
                 .ok(buildingService.findAllById(ids));
