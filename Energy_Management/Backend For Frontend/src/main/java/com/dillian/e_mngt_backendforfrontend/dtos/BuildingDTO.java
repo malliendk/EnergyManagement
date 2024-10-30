@@ -21,8 +21,8 @@ public class BuildingDTO {
     private double energyConsumption;
     private double goldIncome;
     private int popularityIncome;
-    private int researchIncome;
-    private int environmentalIncome;
+    private double researchIncome;
+    private double environmentalIncome;
     private List<SolarPanelSetDTO> solarPanelSets;
 
 }
